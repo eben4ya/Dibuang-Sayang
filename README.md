@@ -28,6 +28,7 @@ Untuk mengatasi limbah makanan di hotel, kami menggunakan **Analisis Pareto** un
 - **Ketua Kelompok:** 
 - **Anggota 1:** Benaya Imanuela - 22/494790/TK/54313 (Backend Developer)
 - **Anggota 2:** Muhammad Hilmi Dzaki Wismadi - 22/497591/TK/54539 (Software Architect)
+- **Anggota 3:** Sulaiman Fawwaz Abdillah Karim - 22/493813/TK/54120 (Frontend Developer)
 
 Mari bersama kita kurangi limbah makanan dan bantu mereka yang membutuhkan! 🌾🌍
 
