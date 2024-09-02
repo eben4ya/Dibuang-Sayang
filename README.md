@@ -22,7 +22,7 @@ Untuk mengatasi limbah makanan di hotel, kami menggunakan **Analisis Pareto** un
 2. **Standarisasi Porsi Makanan:** 📏 Mengembangkan panduan porsi yang sesuai untuk tamu.
 3. **Pengelolaan Bahan Makanan:** 🗂️ Implementasi sistem inventaris yang lebih ketat.
 
-### **Class Diagram**
+### **🖼️Class Diagram**
 ![class-diagram](./public/Dibuang-Sayang-Class-Diagram.png)
 ---
 
