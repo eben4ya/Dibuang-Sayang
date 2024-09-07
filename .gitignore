@@ -1,0 +1,18 @@
+# temporary files
+.vs/
+Appview/.vs/
+Appview/bin/
+Appview/obj/
+
+# User-specific files
+*.user
+*.suo
+
+# Build results
+*.exe
+*.dll
+*.pdb
+
+# Logs
+*.log
+
