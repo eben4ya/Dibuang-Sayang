@@ -20,7 +20,7 @@
                         <Setter Property="Foreground" Value="Gray" />
                         <Style.Triggers>
                             <Trigger Property="Text" Value="">
-                                <Setter Property="Text" Value="Username" />
+                                <!--<Setter Property="Text" Value="Username" />-->
                                 <Setter Property="Foreground" Value="Gray" />
                             </Trigger>
                             <Trigger Property="Text" Value="{x:Null}">

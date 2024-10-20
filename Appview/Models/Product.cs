@@ -10,36 +10,36 @@ namespace Appview.Models
 	public class Product
 	{
 		public int ProductID { get; set; }
-		public string Name { get; set; }
+		public string ProductName { get; set; }
 		public string Description { get; set; }
-		public DateTime ExpriryDate { get; set; }
-		public decimal Price { get; set; }
+		public DateTime ExpiryDate { get; set; }
+		public decimal ProductPrice { get; set; }
 		public int QuantityAvailable { get; set; }
 
 		// Constructor
 		public Product(int productID, string name, string description, DateTime expiryDate, decimal price, int quantityAvailable)
 		{
 			ProductID = productID;
-			Name = name;
+            ProductName = name;
 			Description = description;
 			ExpiryDate = expiryDate;
-			Price = price;
+            ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
 		}
 
 		public void UpdateProductDetails(string name, string description, DateTime expiryDate, decimal price, int quantityAvailable)
 		{
-			Name = name;
+			ProductName = name;
 			Description = description;
 			ExpiryDate = expiryDate;
-			Price = price;
+			ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
-			Console.WriteLine("Product details updated!")
+			Console.WriteLine("Product details updated!");
 		}
 
 		public bool CheckAvailability()
 		{
-			console.WriteLine("Checking Availability");
+			Console.WriteLine("Checking Availability");
 			return QuantityAvailable > 0;
 		}
 
