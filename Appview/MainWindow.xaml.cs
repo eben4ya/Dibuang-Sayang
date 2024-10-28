@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Npgsql;
+using System.Configuration;
 
 namespace Appview
 {
@@ -23,6 +25,38 @@ namespace Appview
         public MainWindow()
         {
             InitializeComponent();
+            ConnectToDatabase();
+        }
+
+        private void ConnectToDatabase()
+        {
+            // Get connection string from App.Config
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    MessageBox.Show("DB connect successfully", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Get product from db
+                    using (var command = new NpgsqlCommand("SELECT * FROM product;", connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Console.WriteLine($"Data: {reader[0]}");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"DB connection failed: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

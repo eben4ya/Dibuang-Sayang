@@ -16,8 +16,8 @@ namespace Appview
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            LoginView loginView = new LoginView();
-            loginView.Show();
+            //LoginView loginView = new LoginView();
+            //loginView.Show();
         }
     }
 }

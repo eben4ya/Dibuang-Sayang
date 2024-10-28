@@ -4,19 +4,6 @@ using System.Linq;
 
 namespace Appview.Models
 {
-    // Product class to represent a product object
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-
-        public override string ToString()
-        {
-            return $"ID: {Id}, Name: {Name}, Price: {Price:C}";
-        }
-    }
-
     public class Admin
     {
         private List<Product> _productList;  
@@ -27,9 +14,9 @@ namespace Appview.Models
         }
 
  
-        public void AddProduct(int id, string name, decimal price)
+        public void AddProduct(int id, string name, string description, decimal price, DateTime expiryDate, int quantityAvailable)
         {          
-            Product newProduct = new Product { Id = id, Name = name, Price = price };
+            Product newProduct = new Product(id, name, description, expiryDate, price, quantityAvailable );
             _productList.Add(newProduct);
             Console.WriteLine("Product added successfully: " + newProduct);
         }
@@ -37,13 +24,13 @@ namespace Appview.Models
         public void UpdateProduct(int id, string newName, decimal newPrice)
         {
             // Find the product in the list by ID
-            Product productToUpdate = _productList.FirstOrDefault(p => p.Id == id);
+            Product productToUpdate = _productList.FirstOrDefault(p => p.ProductID == id);
 
             if (productToUpdate != null)
             {
                 // Update the product details
-                productToUpdate.Name = newName;
-                productToUpdate.Price = newPrice;
+                productToUpdate.ProductName = newName;
+                productToUpdate.ProductPrice = newPrice;
 
                 Console.WriteLine("Product updated successfully: " + productToUpdate);
             }
@@ -57,7 +44,7 @@ namespace Appview.Models
         public void DeleteProduct(int id)
         {
             // Find the product in the list by ID
-            Product productToRemove = _productList.FirstOrDefault(p => p.Id == id);
+            Product productToRemove = _productList.FirstOrDefault(p => p.ProductID == id);
 
             if (productToRemove != null)
             {

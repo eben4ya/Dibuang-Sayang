@@ -3,6 +3,7 @@
 Appview/.vs/
 Appview/bin/
 Appview/obj/
+Appview/App.config
 
 # User-specific files
 *.user
