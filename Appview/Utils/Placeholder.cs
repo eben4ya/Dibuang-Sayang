@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Appview.Utils
 {
@@ -22,12 +23,16 @@ namespace Appview.Utils
         {
             if (d is TextBox textBox)
             {
+                // Define the placeholder color
+                var placeholderBrush = Brushes.Gray;
+                var defaultBrush = Brushes.White; // Default text color
+
                 textBox.GotFocus += (sender, args) =>
                 {
                     if (textBox.Text == (string)e.NewValue)
                     {
                         textBox.Text = string.Empty;
-                        textBox.Foreground = System.Windows.Media.Brushes.White;
+                        textBox.Foreground = defaultBrush;
                     }
                 };
 
@@ -36,15 +41,15 @@ namespace Appview.Utils
                     if (string.IsNullOrWhiteSpace(textBox.Text))
                     {
                         textBox.Text = (string)e.NewValue;
-                        textBox.Foreground = System.Windows.Media.Brushes.White;
+                        textBox.Foreground = placeholderBrush;
                     }
                 };
 
-                // Initial placeholder
+                // Set the initial placeholder if the TextBox is empty
                 if (string.IsNullOrWhiteSpace(textBox.Text))
                 {
                     textBox.Text = (string)e.NewValue;
-                    textBox.Foreground = System.Windows.Media.Brushes.White;
+                    textBox.Foreground = placeholderBrush;
                 }
             }
         }

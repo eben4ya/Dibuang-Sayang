@@ -19,23 +19,31 @@
                 <RadioButton Content="Customer" Margin="10"/>
                 <RadioButton Content="Hotel"  Margin="10"/>
             </StackPanel>
-            <!--Register Form-->
-            <TextBox Text="" Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Username..." TextChanged="TextBox_TextChanged"/>
-            <TextBox Text="" Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Email..." TextChanged="TextBox_TextChanged_1" BorderBrush="#FFD1D1D1"/>
-            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Password..."/>
-            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Confirm Password..." />
-            <Button Content="Register" HorizontalAlignment="Right" Width="69" Foreground="White" Background="DarkOrange" BorderThickness="0" Padding="5" Margin="0, 10" Click="Button_Click"/>
+
+            <!-- Register Form with Placeholder Properties -->
+            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Username..." />
+            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Email..." 
+                     BorderBrush="#FFD1D1D1" />
+            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Password..." />
+            <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Confirm Password..." />
+
+            <Button Content="Register" HorizontalAlignment="Right" Width="69" Foreground="White" 
+                    Background="DarkOrange" BorderThickness="0" Padding="5" Margin="0, 10" Click="Button_Click" />
             <TextBlock>
                 <Run Foreground="DarkOrange" Text="Sudah memiliki akun? " />
                 <Hyperlink NavigateUri="GoToLoginPage">
                     <Run Text="Login disini" Foreground="Blue"/>
-                 </Hyperlink>
+                </Hyperlink>
             </TextBlock>
-
         </StackPanel>
 
         <!-- Logo Section -->
-        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="212" Width="246">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Height="212" Width="246">
             <Image Source="../Public/DibuangSayangLogo.png" Width="150" Height="150" />
             <TextBlock Text="Dibuang Sayang" FontSize="32" FontWeight="Bold" Foreground="OrangeRed"  Margin="0,20,0,0" />
         </StackPanel>
