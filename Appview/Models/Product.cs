@@ -9,6 +9,7 @@ namespace Appview.Models
 
 	public class Product
 	{
+		//Implementasi "Encapsulation" dengan menggunakan getter dan setter
 		public int ProductID { get; set; }
 		public string ProductName { get; set; }
 		public string Description { get; set; }

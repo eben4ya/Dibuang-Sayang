@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Appview.Models
 {
-    public class User
+    public class User : Person
     {
         public int userID { get; set; }
         public string Username { get; set; }
@@ -17,6 +17,10 @@ namespace Appview.Models
         private bool isLoggedIn = false;
         private List<string> reservations = new List<string>();
 
+        public override void DisplayRole()
+        {
+            Console.WriteLine("This a regular User");
+        }
 
         public void Register()
         {
