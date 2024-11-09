@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appview.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,12 +41,23 @@ namespace Appview.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var recommendedFood = new RecommendedFood();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
+            var db = new Database();
+            string username = txtUsername.Text; // Replace with the actual name of the Username TextBox
+            string password = txtPassword.Text; // Replace with the actual name of the Password TextBox
 
-            if (mainWindow != null)
+            if (db.AuthenticateUser(username, password))
             {
-                mainWindow.Content = recommendedFood;
+                var recommendedFood = new RecommendedFood();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                if (mainWindow != null)
+                {
+                    mainWindow.Content = recommendedFood;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
             }
         }
     }
