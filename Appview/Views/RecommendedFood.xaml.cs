@@ -24,5 +24,16 @@ namespace Appview.Views
         {
             InitializeComponent();
         }
+
+        public void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            var loginPage = new Login();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = loginPage;
+            }
+        }
     }
 }

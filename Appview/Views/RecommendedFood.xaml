@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Appview.Views"
+             xmlns:local="clr-namespace:Appview.Utils"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FB6501" Margin="20">
@@ -17,12 +18,11 @@
         </Grid.ColumnDefinitions>
 
         <!-- Search Bar -->
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Margin="10" Padding="10"
-                 FontSize="18" Background="White" Foreground="Gray" Text="Cari Dengan Keywords......" />
+        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="50" Margin="10" Padding="10" FontSize="18" Background="White" Foreground="Gray" local:Placeholder.Placeholder="Cari Dengan Keywords ..."/>
 
         <!-- Recommended Food Section -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
-            <TextBlock Text="Rekomen based on expiring" FontSize="24" FontWeight="Bold" Foreground="#FFF" Margin="10,0" />
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" Background="white">
+            <TextBlock Text="Rekomen based on expiring" FontSize="24" FontWeight="Bold" Foreground="#F83D01" Margin="10,10, 0, 0" />
 
             <!-- Recommended Food Items with Horizontal Scroll -->
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
@@ -103,7 +103,7 @@
 
         <!-- Order Summary Section -->
         <StackPanel Grid.Row="1" Grid.Column="1" Background="White" Margin="10">
-            <TextBlock Text="Your order" FontSize="24" FontWeight="Bold" Foreground="#FB6501" />
+            <TextBlock Text="Your order" FontSize="24" FontWeight="Bold" Foreground="#FB6501" Margin="10, 10, 0, 0"/>
 
             <!-- Order Items -->
             <ItemsControl Margin="10">
@@ -135,6 +135,7 @@
                     </StackPanel>
                 </Border>
             </ItemsControl>
+            <Button Content="Logout" Width="100" Height="35" Background="#FB6501" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" Click="LogoutButton_Click" Margin="0, 100, 0, 0"/>
         </StackPanel>
     </Grid>
 </UserControl>
