@@ -26,7 +26,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--Image-->
-                        <Image Grid.Column="0" Source="../Public/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
+                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
 
                         <!--Food Details-->
                         <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
@@ -61,7 +61,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--Image-->
-                        <Image Grid.Column="0" Source="../Public/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
+                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
 
                         <!--Food Details-->
                         <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
@@ -96,7 +96,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <!--Image-->
-                        <Image Grid.Column="0" Source="../Public/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
+                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
 
                         <!--Food Details-->
                         <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">

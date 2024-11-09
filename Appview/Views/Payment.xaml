@@ -12,7 +12,7 @@
             <!-- Content -->
             <StackPanel>
                 <!-- Food Image -->
-                <Image Source="../Public/Food.png" Stretch="UniformToFill" HorizontalAlignment="Stretch" Height="200" Margin="0, 0, 0, 10"/>
+                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" HorizontalAlignment="Stretch" Height="200" Margin="0, 0, 0, 10"/>
 
                 <!-- Konfirmasi Pembayaran -->
                 <TextBlock Text="Konfirmasi Pembayaran" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 10, 0, 5"/>

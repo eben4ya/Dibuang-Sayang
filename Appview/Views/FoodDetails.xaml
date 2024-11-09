@@ -58,7 +58,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Image -->
-                <Image Source="/Public/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
+                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
 
                 <!-- Title -->
                 <TextBlock Text="Scramble Egg and Potato" 

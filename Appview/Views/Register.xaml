@@ -44,7 +44,8 @@
         <!-- Logo Section -->
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Height="212" Width="246">
-            <Image Source="./Public/DibuangSayangLogo.png" Width="150" Height="150" />
+            <!--<Image Source="./Public/DibuangSayangLogo.png" Width="150" Height="150" />-->
+            <Image Source="https://i.ibb.co.com/nccF0Kf/Dibuang-Sayang-Logo.png" Width="150" Height="150" />
             <TextBlock Text="Dibuang Sayang" FontSize="32" FontWeight="Bold" Foreground="OrangeRed"  Margin="0,20,0,0" />
         </StackPanel>
     </Grid>

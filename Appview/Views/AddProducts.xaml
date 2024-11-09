@@ -32,7 +32,7 @@
                         <DataTemplate>
                             <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
                                 <StackPanel Width="150">
-                                    <Image Source="../Public/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
+                                    <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
                                     <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
                                     <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
@@ -46,7 +46,7 @@
                     <!-- Add more items here as needed -->
                     <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
                         <StackPanel Width="150">
-                            <Image Source="../Public/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
+                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
                             <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
@@ -57,7 +57,7 @@
                     </Border>
                     <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
                         <StackPanel Width="150">
-                            <Image Source="../Public/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
+                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
                             <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
@@ -68,7 +68,7 @@
                     </Border>
                     <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
                         <StackPanel Width="150">
-                            <Image Source="../Public/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
+                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
                             <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
@@ -110,11 +110,11 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="../Public/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="5" />
+                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="5" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <!-- Add more image previews here as needed -->
-                <Image Source="../Public/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="5" />
+                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="5" />
             </ItemsControl>
         </StackPanel>
     </Grid>
