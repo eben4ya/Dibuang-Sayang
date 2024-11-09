@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appview.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,12 +73,42 @@ namespace Appview.Views
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            var paymentLogin = new Payment();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
+            string username = txtUsername.Text;
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+            string confirmPassword = txtPasswordConfirm.Text;
 
-            if (mainWindow != null)
+            // Basic validation
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
-                mainWindow.Content = paymentLogin;
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            if (password != confirmPassword)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+
+            var db = new Database();
+            bool isRegistered = db.RegisterUser(username, email, password);
+
+            if (isRegistered)
+            {
+                MessageBox.Show("Registration successful!");
+                // Optionally navigate back to the login page
+                var loginPage = new Login();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                if (mainWindow != null)
+                {
+                    mainWindow.Content = loginPage;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Registration failed. Try again.");
             }
         }
     }
