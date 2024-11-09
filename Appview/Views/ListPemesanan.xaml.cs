@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Appview.Views
 {
     /// <summary>
-    /// Interaction logic for Pembayaran.xaml
+    /// Interaction logic for ListPemesanan.xaml
     /// </summary>
-    public partial class Pembayaran : UserControl
+    public partial class ListPemesanan : UserControl
     {
-        public Pembayaran()
+        public ListPemesanan()
         {
             InitializeComponent();
         }
