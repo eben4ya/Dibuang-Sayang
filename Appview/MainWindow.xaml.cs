@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Npgsql;
 using System.Configuration;
+using Appview.Views;
 
 namespace Appview
 {
@@ -26,6 +27,13 @@ namespace Appview
         {
             InitializeComponent();
             ConnectToDatabase();
+
+            Content = new Login();
+
+            // Initialize the NavigationService with MainContent control
+            //NavigationService.Initialize(MainContent);
+
+            //NavigationService.Navigate(new Login());
         }
 
         private void ConnectToDatabase()

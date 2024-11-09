@@ -32,11 +32,11 @@
                      BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Confirm Password..." />
 
             <Button Content="Register" HorizontalAlignment="Right" Width="69" Foreground="White" 
-                    Background="DarkOrange" BorderThickness="0" Padding="5" Margin="0, 10" Click="Button_Click" />
+                    Background="DarkOrange" BorderThickness="0" Padding="5" Margin="0, 10" Click="RegisterButton_Click" />
             <TextBlock>
                 <Run Foreground="DarkOrange" Text="Sudah memiliki akun? " />
-                <Hyperlink NavigateUri="GoToLoginPage">
-                    <Run Text="Login disini" Foreground="Blue"/>
+                <Hyperlink NavigateUri="GoToLoginPage" Click="LoginLink_Click">
+                    <Run Text="Login di sini" Foreground="Blue"/>
                 </Hyperlink>
             </TextBlock>
         </StackPanel>
@@ -44,7 +44,7 @@
         <!-- Logo Section -->
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Height="212" Width="246">
-            <Image Source="../Public/DibuangSayangLogo.png" Width="150" Height="150" />
+            <Image Source="./Public/DibuangSayangLogo.png" Width="150" Height="150" />
             <TextBlock Text="Dibuang Sayang" FontSize="32" FontWeight="Bold" Foreground="OrangeRed"  Margin="0,20,0,0" />
         </StackPanel>
     </Grid>

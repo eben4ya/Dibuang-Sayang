@@ -57,5 +57,28 @@ namespace Appview.Views
         {
 
         }
+
+        private void LoginLink_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show("Navigate to registration page!");
+            var loginPage = new Login();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = loginPage;
+            }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            var paymentLogin = new Payment();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = paymentLogin;
+            }
+        }
     }
 }
