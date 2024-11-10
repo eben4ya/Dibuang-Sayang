@@ -99,7 +99,18 @@ namespace Appview.Views
             }
 
             var db = new Database();
-            bool isRegistered = db.RegisterUser(username, email, password);
+            bool isRegistered;
+
+            if (isHotel)
+            {
+                // Register as Hotel Admin
+                isRegistered = db.RegisterHotel(username, email, password);
+            }
+            else
+            {
+                // Register as Customer
+                isRegistered = db.RegisterUser(username, email, password);
+            }
 
             if (isRegistered)
             {
