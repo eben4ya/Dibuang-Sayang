@@ -76,8 +76,8 @@
                 <Grid Grid.Column="1">
                     <!-- Toggle Button -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-                        <RadioButton Content="Customer" Margin="0, 75, 0, 0"/>
-                        <RadioButton Content="Hotel"  Margin="10, 75, 0, 0"/>
+                        <RadioButton x:Name="radioCustomer" Content="Customer" Margin="0, 75, 0, 0"/>
+                        <RadioButton x:Name="radioHotel" Content="Hotel"  Margin="10, 75, 0, 0"/>
                     </StackPanel>
                     <!--<Border CornerRadius="45" Background="White" Width="250" Height="86" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Padding="12">
                         <Grid>

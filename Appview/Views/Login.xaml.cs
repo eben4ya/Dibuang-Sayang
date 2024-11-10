@@ -44,20 +44,50 @@ namespace Appview.Views
             var db = new Database();
             string username = txtUsername.Text; // Replace with the actual name of the Username TextBox
             string password = txtPassword.Text; // Replace with the actual name of the Password TextBox
+            bool isHotel = radioHotel.IsChecked == true;
 
-            if (db.AuthenticateUser(username, password))
+            if (!radioCustomer.IsChecked == true && !isHotel)
             {
-                var recommendedFood = new RecommendedFood();
-                var mainWindow = Application.Current.MainWindow as MainWindow;
+                MessageBox.Show("Please select Customer or Hotel.");
+                return;
+            }
 
-                if (mainWindow != null)
+
+            if (isHotel)
+            {
+                // Login as Hotel Admin
+                if (db.AuthenticateHotel(username, password))
                 {
-                    mainWindow.Content = recommendedFood;
+                    var hotelDashboard = new AddProducts();
+                    var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.Content = hotelDashboard;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid hotel username or password.");
                 }
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                // Login as Customer
+                if (db.AuthenticateUser(username, password))
+                {
+                    var recommendedFood = new RecommendedFood();
+                    var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.Content = recommendedFood;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
+                }
             }
         }
     }
