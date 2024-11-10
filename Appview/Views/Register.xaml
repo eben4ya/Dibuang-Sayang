@@ -16,8 +16,8 @@
         <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="130,0,130,0" Height="284">
             <!-- Toggle Customer/Hotel -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-                <RadioButton Content="Customer" Margin="10"/>
-                <RadioButton Content="Hotel"  Margin="10"/>
+                <RadioButton Content="Customer" Margin="10" x:Name="radioCustomer"/>
+                <RadioButton Content="Hotel"  Margin="10" x:Name="radioHotel"/>
             </StackPanel>
 
             <!-- Register Form with Placeholder Properties -->

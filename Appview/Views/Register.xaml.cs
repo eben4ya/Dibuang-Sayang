@@ -77,11 +77,18 @@ namespace Appview.Views
             string email = txtEmail.Text;
             string password = txtPassword.Text;
             string confirmPassword = txtPasswordConfirm.Text;
+            bool isHotel = radioHotel.IsChecked == true; 
 
             // Basic validation
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            if (!radioCustomer.IsChecked == true && !isHotel)
+            {
+                MessageBox.Show("Please select Customer or Hotel.");
                 return;
             }
 
