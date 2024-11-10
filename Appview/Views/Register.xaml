@@ -22,14 +22,14 @@
 
             <!-- Register Form with Placeholder Properties -->
             <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
-                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Username..." />
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Username..." x:Name="txtUsername" />
             <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
                      BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Email..." 
-                     BorderBrush="#FFD1D1D1" />
+                     BorderBrush="#FFD1D1D1" x:Name="txtEmail"/>
             <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
-                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Password..." />
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Password..." x:Name="txtPassword"/>
             <TextBox Margin="0, 5" Width="200" Foreground="White" Background="DarkOrange" 
-                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Confirm Password..." />
+                     BorderThickness="0" Padding="5" local:Placeholder.Placeholder="Confirm Password..."  x:Name="txtPasswordConfirm"/>
 
             <Button Content="Register" HorizontalAlignment="Right" Width="69" Foreground="White" 
                     Background="DarkOrange" BorderThickness="0" Padding="5" Margin="0, 10" Click="RegisterButton_Click" />
