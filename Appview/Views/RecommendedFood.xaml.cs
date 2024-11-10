@@ -35,5 +35,20 @@ namespace Appview.Views
                 mainWindow.Content = loginPage;
             }
         }
+
+        public void FoodButton_Click1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Create an instance of FoodDetails page
+            var foodDetailsPage = new FoodDetails();
+
+            // Get the main window and set its content to the new page
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = foodDetailsPage;
+            }
+        }
     }
 }

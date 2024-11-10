@@ -52,7 +52,25 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                     <!-- Add as many items as needed here -->
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
+                    <Button BorderBrush="#F83D01" BorderThickness="1"  Padding="10" Margin="10" Background="White" Click="FoodButton_Click1">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="BorderBrush" Value="#F83D01" />
+                                <Setter Property="Padding" Value="10" />
+                                <Setter Property="Margin" Value="10" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+
                         <StackPanel Width="200">
                             <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
@@ -66,8 +84,27 @@
                                 <TextBlock Text="8 Pcs left" FontSize="14" Foreground="Gray" Margin="10,0,0,0" />
                             </StackPanel>
                         </StackPanel>
-                    </Border>
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
+                    </Button>
+
+                    <Button BorderBrush="#F83D01" BorderThickness="1"  Padding="10" Margin="10" Background="White" Click="FoodButton_Click1">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="BorderBrush" Value="#F83D01" />
+                                <Setter Property="Padding" Value="10" />
+                                <Setter Property="Margin" Value="10" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+
                         <StackPanel Width="200">
                             <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
@@ -81,8 +118,26 @@
                                 <TextBlock Text="8 Pcs left" FontSize="14" Foreground="Gray" Margin="10,0,0,0" />
                             </StackPanel>
                         </StackPanel>
-                    </Border>
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
+                    </Button>
+                    <Button BorderBrush="#F83D01" BorderThickness="1"  Padding="10" Margin="10" Background="White" Click="FoodButton_Click1">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="BorderBrush" Value="#F83D01" />
+                                <Setter Property="Padding" Value="10" />
+                                <Setter Property="Margin" Value="10" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+
                         <StackPanel Width="200">
                             <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                             <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
@@ -96,7 +151,7 @@
                                 <TextBlock Text="8 Pcs left" FontSize="14" Foreground="Gray" Margin="10,0,0,0" />
                             </StackPanel>
                         </StackPanel>
-                    </Border>
+                    </Button>
                 </ItemsControl>
             </ScrollViewer>
         </StackPanel>
