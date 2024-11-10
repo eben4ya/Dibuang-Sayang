@@ -105,7 +105,7 @@
                     <Button Content="-" Style="{StaticResource ButtonStyle}" Width="38"/>
                     <TextBlock Text="3" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
                     <Button Content="+" Style="{StaticResource ButtonStyle}" Width="38"/>
-                    <Button Content="Pesan" Background="{StaticResource AccentColor}" Foreground="White" Padding="10,5" Margin="10,0" FontWeight="Bold" Width="59"/>
+                    <Button Content="Pesan" Background="{StaticResource AccentColor}" Foreground="White" Padding="10,5" Margin="10,0" FontWeight="Bold" Width="59" Click="Pesan_Click"/>
                 </StackPanel>
             </Grid>
         </Border>
