@@ -58,7 +58,7 @@
 
                             <!-- Payment Button across the entire right section -->
                             <Button Grid.ColumnSpan="2" Content="Bayar Sekarang" Background="#F83D01" Foreground="White" FontWeight="Bold"
-                                 Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow"/>
+                                 Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow" Click="Button_Click"/>
                         </Grid>
                     </Grid>
                 </Border>
