@@ -13,8 +13,12 @@
             <!-- Content -->
             <StackPanel>
 
-                <!-- Judul -->
-                <TextBlock Text="Pesanan Anda" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 0, 0, 5"/>
+                <StackPanel Orientation="Horizontal" >
+                    <!-- Judul -->
+                    <TextBlock Text="Pesanan Anda" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 0, 500, 0"/>
+                    <Button Content="Kembali" Width="85" Height="30" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="16" FontWeight="Bold"  Click="Button_Click_1" />
+                    <!-- Back Button -->
+                </StackPanel>
 
                 <!-- Item 1 -->
                 <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110" Margin="0, 0, 0, 5">
@@ -122,8 +126,7 @@
                 </Border>
             </StackPanel>
         </Border>
-        <!-- Back Button -->
-        <Button Content="Kembali" Width="85" Height="30" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="16" FontWeight="Bold" Margin="670,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_1" />
+
     </Grid>
 </UserControl>
 
