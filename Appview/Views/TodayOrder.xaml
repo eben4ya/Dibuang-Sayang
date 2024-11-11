@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="Appview.Views.TodayOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <!-- Title -->
+        <TextBlock Text="Today Order" FontSize="32" FontWeight="Bold" Foreground="OrangeRed" Margin="20,20,0,0" VerticalAlignment="Top"/>
+
+        <!-- Order List -->
+        <ScrollViewer Margin="20,80,20,100" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20">
+                <!-- Order Card 1 -->
+                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Order Image -->
+                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <!-- Order Details -->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
+                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
+                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
+                            </StackPanel>
+                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <!-- Repeat for Other Cards -->
+                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Order Image -->
+                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <!-- Order Details -->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
+                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
+                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
+                            </StackPanel>
+                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Order Image -->
+                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <!-- Order Details -->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
+                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
+                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
+                            </StackPanel>
+                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Order Image -->
+                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                        <!-- Order Details -->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
+                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
+                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
+                            </StackPanel>
+                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+            <Button Content="Tambah Menu" Width="150" Height="50" Background="OrangeRed" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20" />
+            <Button Content="Log Out" Width="150" Height="50" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" FontSize="20" FontWeight="Bold" Margin="20" />
+        </StackPanel>
+    </Grid>
+</UserControl>
