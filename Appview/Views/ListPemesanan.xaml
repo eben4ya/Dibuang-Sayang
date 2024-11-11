@@ -122,6 +122,8 @@
                 </Border>
             </StackPanel>
         </Border>
+        <!-- Back Button -->
+        <Button Content="Kembali" Width="85" Height="30" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="16" FontWeight="Bold" Margin="670,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_1" />
     </Grid>
 </UserControl>
 
