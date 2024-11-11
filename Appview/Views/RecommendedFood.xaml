@@ -158,7 +158,7 @@
 
         <!-- Order Summary Section -->
         <StackPanel Grid.Row="1" Grid.Column="1" Background="White" Margin="10">
-            <TextBlock Text="Your order" FontSize="24" FontWeight="Bold" Foreground="#FB6501" Margin="10, 10, 0, 0"/>
+            <Button Content="Detail Order" Width="130" Height="35" Background="#FB6501" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" Margin="10, 10, 0, 0" Click="Button_Click"/>
 
             <!-- Order Items -->
             <ItemsControl Margin="10">

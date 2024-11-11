@@ -50,5 +50,16 @@ namespace Appview.Views
                 mainWindow.Content = foodDetailsPage;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var loginPage = new ListPemesanan();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = loginPage;
+            }
+        }
     }
 }
