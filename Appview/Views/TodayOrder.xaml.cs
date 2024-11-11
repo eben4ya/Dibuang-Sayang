@@ -35,5 +35,16 @@ namespace Appview.Views
                 mainWindow.Content = loginPage;
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var loginPage = new AddProducts();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = loginPage;
+            }
+        }
     }
 }
