@@ -58,7 +58,7 @@ namespace Appview.Views
                 // Login as Hotel Admin
                 if (db.AuthenticateHotel(username, password))
                 {
-                    var hotelDashboard = new AddProducts();
+                    var hotelDashboard = new TodayOrder();
                     var mainWindow = Application.Current.MainWindow as MainWindow;
 
                     if (mainWindow != null)
