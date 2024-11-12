@@ -12,26 +12,23 @@ namespace Appview.Models
 		//Implementasi "Encapsulation" dengan menggunakan getter dan setter
 		public int ProductID { get; set; }
 		public string ProductName { get; set; }
-		public string Description { get; set; }
 		public DateTime ExpiryDate { get; set; }
 		public decimal ProductPrice { get; set; }
 		public int QuantityAvailable { get; set; }
 
 		// Constructor
-		public Product(int productID, string name, string description, DateTime expiryDate, decimal price, int quantityAvailable)
+		public Product(int productID, string name, DateTime expiryDate, decimal price, int quantityAvailable)
 		{
 			ProductID = productID;
             ProductName = name;
-			Description = description;
 			ExpiryDate = expiryDate;
             ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
 		}
 
-		public void UpdateProductDetails(string name, string description, DateTime expiryDate, decimal price, int quantityAvailable)
+		public void UpdateProductDetails(string name, DateTime expiryDate, decimal price, int quantityAvailable)
 		{
 			ProductName = name;
-			Description = description;
 			ExpiryDate = expiryDate;
 			ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
