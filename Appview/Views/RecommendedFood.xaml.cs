@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appview.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Appview.Views
         public RecommendedFood()
         {
             InitializeComponent();
+            DataContext = new GetProductFromDB();
         }
 
         public void LogoutButton_Click(object sender, RoutedEventArgs e)
