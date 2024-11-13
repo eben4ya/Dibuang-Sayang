@@ -48,7 +48,7 @@ namespace Appview.Views
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("INSERT INTO product (product_name, description, price, quantity_available, expiry_date) VALUES (@name, @desc, @price, @quantity, @expiryDate)", connection))
+                    using (var command = new NpgsqlCommand("INSERT INTO product (productname, price, quantityavailable, expirationdate) VALUES (@name, @price, @quantity, @expiryDate)", connection))
                     {
                         command.Parameters.AddWithValue("@name", productName);
                         command.Parameters.AddWithValue("@price", price);
