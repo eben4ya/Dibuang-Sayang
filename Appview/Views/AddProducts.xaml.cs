@@ -72,5 +72,28 @@ namespace Appview.Views
                 MessageBox.Show($"Failed to add product: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            // Get data from the input fields
+            string productName = txtNamaMenu.Text;
+            decimal price;
+            int quantity;
+
+            if (!decimal.TryParse(txtHarga.Text, out price))
+            {
+                MessageBox.Show("Harga harus berupa angka desimal yang valid.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Kembali jika parsing gagal
+            }
+
+            if (!int.TryParse(txtStok.Text, out quantity))
+            {
+                MessageBox.Show("Stok harus berupa angka bulat yang valid.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Kembali jika parsing gagal
+            }
+            DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;  
+
+            AddProductToDatabase(productName, price, quantity, expiryDate);
+        }
     }
 }
