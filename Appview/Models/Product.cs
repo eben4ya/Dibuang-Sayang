@@ -10,14 +10,16 @@ namespace Appview.Models
 	public class Product
 	{
 		//Implementasi "Encapsulation" dengan menggunakan getter dan setter
+		public int ProductId { get; set; }
 		public string ProductName { get; set; }
 		public DateTime ExpiryDate { get; set; }
 		public decimal ProductPrice { get; set; }
 		public int QuantityAvailable { get; set; }
 
 		// Constructor
-		public Product(string name, DateTime expiryDate, decimal price, int quantityAvailable)
+		public Product(int productId, string name, DateTime expiryDate, decimal price, int quantityAvailable)
 		{	
+			ProductId = productId;
             ProductName = name;
 			ExpiryDate = expiryDate;
             ProductPrice = price;

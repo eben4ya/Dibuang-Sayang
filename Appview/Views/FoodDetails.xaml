@@ -61,10 +61,10 @@
                 <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
 
                 <!-- Title -->
-                <TextBlock Text="Scramble Egg and Potato" 
-                           Style="{StaticResource SectionTitleStyle}"
-                           Foreground="{StaticResource AccentColor}"
-                           Grid.Row="1" Grid.Column="0" Margin="10,5,0,5" FontSize="22"/>
+                <TextBlock x:Name="ContentTitle" 
+                    Style="{StaticResource SectionTitleStyle}"
+                    Foreground="{StaticResource AccentColor}"
+                    Grid.Row="1" Grid.Column="0" Margin="10,5,0,5" FontSize="22"/>
 
                 <!-- Description -->
                 <TextBlock Text="Fluffy scrambled eggs paired with tender, golden-brown potatoes create a simple yet satisfying dish. Lightly seasoned and cooked to perfection, this comforting combination is perfect for any meal of the day." 
@@ -93,7 +93,7 @@
                         <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="66">
                             <TextBlock Text="10 Pcs" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                         </Border>
-                        <TextBlock Text="Harga" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0" Height="31"/>
+                        <TextBlock x:Name="ContentPrice" Text="Harga" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0" Height="31"/>
                         <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="69">
                             <TextBlock Text="25.000" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                         </Border>

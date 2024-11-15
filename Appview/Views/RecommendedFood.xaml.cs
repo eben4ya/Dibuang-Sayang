@@ -1,4 +1,5 @@
-﻿using Appview.ViewModel;
+﻿using Appview.Models;
+using Appview.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,21 +39,6 @@ namespace Appview.Views
             }
         }
 
-        public void FoodButton_Click1(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-            // Create an instance of FoodDetails page
-            var foodDetailsPage = new FoodDetails();
-
-            // Get the main window and set its content to the new page
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-
-            if (mainWindow != null)
-            {
-                mainWindow.Content = foodDetailsPage;
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new ListPemesanan();
@@ -63,5 +49,24 @@ namespace Appview.Views
                 mainWindow.Content = loginPage;
             }
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+
+            var selectedData = border?.DataContext as Product;
+
+            var foodDetailsPage = new FoodDetails(
+                selectedData.ProductName,
+                selectedData.ProductPrice
+                );  // Instantiate the FoodDetails page
+            var mainWindow = Application.Current.MainWindow as MainWindow;  // Get reference to MainWindow
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = foodDetailsPage;  // Navigate to FoodDetails page
+            }
+        }
+
     }
 }

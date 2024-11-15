@@ -31,18 +31,19 @@ namespace Appview.ViewModel
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("SELECT productname, price, quantityavailable, expirationdate FROM product", connection))
+                    using (var command = new NpgsqlCommand("SELECT product_id, productname, price, quantityavailable, expirationdate FROM product", connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
+                                int productId = (int)reader["product_id"];
                                 string productName = reader["productname"].ToString();
                                 decimal price = (decimal)reader["price"];
                                 int quantity = (int)reader["quantityavailable"];
                                 DateTime expiryDate = (DateTime)reader["expirationdate"];
 
-                                var newProduct = new Product(productName, expiryDate, price, quantity);
+                                var newProduct = new Product(productId, productName, expiryDate, price, quantity);
 
                                 Products.Add(newProduct);
                             }
@@ -55,6 +56,21 @@ namespace Appview.ViewModel
                 // Handle errors here
                 MessageBox.Show($"Failed to load products: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public static Product FindById (ObservableCollection<Product> Products, int id)
+        {
+            int maxLen = Products.Count;
+
+            // find from Products where productId = id
+            for (int i = 0; i + 1 == maxLen; i++)
+            {
+                if (Products[i].ProductId == id)
+                    return Products[i];
+            };
+
+            // return error
+            return null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

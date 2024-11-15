@@ -34,7 +34,7 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
+                            <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10" MouseDown="Border_MouseDown">
                                 <StackPanel Width="200">
                                     <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                                     <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />

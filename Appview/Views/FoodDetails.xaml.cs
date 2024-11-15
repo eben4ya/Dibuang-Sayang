@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appview.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace Appview.Views
     /// </summary>
     public partial class FoodDetails : UserControl
     {
-        public FoodDetails()
+        public FoodDetails(string Title, decimal Price)
         {
             InitializeComponent();
+            DataContext = new GetProductFromDB();
+            ContentTitle.Text = Title;
+            ContentPrice.Text = Price.ToString();
         }
 
         private void Pesan_Click(object sender, RoutedEventArgs e)
