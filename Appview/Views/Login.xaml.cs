@@ -1,4 +1,5 @@
 ﻿using Appview.Data;
+using Appview.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Appview.ViewModel.UserSession;
 
 namespace Appview.Views
 {
@@ -74,14 +76,18 @@ namespace Appview.Views
             else
             {
                 // Login as Customer
+                //var userId = db.AuthenticateUser(username, password);
                 if (db.AuthenticateUser(username, password))
                 {
-                    var recommendedFood = new RecommendedFood();
+                    int userId = db.ValidateUser(username, password);
+                    UserSession.UserId = userId;
+
+                    var recommendedFoodPage = new RecommendedFood();
                     var mainWindow = Application.Current.MainWindow as MainWindow;
 
                     if (mainWindow != null)
                     {
-                        mainWindow.Content = recommendedFood;
+                        mainWindow.Content = recommendedFoodPage;
                     }
                 }
                 else
