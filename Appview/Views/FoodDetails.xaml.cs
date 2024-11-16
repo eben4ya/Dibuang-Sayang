@@ -22,17 +22,19 @@ namespace Appview.Views
     /// </summary>
     public partial class FoodDetails : UserControl
     {
+        private int _productId;
         private int _stock;
-        public FoodDetails(string Title, decimal Price, int Stock, DateTime Expired, string Description)
+        public FoodDetails(int productId, string Title, decimal Price, int Stock, DateTime Expired, string Description)
         {
             InitializeComponent();
             DataContext = new GetProductFromDB();
+
+            _productId = productId;
             ContentTitle.Text = Title;
             ContentPrice.Text = Price.ToString();
             ContentStock.Text = Stock.ToString();
             ContentExpiry.Text = Expired.ToString();
             ContentDescription.Text = Description;
-
             _stock = Stock;
         }
 
@@ -61,17 +63,20 @@ namespace Appview.Views
         }
         private void Pesan_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
-            // Create an instance of FoodDetails page
-            var paymentPage = new Payment();
-
-            // Get the main window and set its content to the new page
-            var mainWindow = Application.Current.MainWindow as MainWindow;
-
-            if (mainWindow != null)
+            if (int.TryParse(QuantityTextBlock.Text, out int quantity) && decimal.TryParse(ContentPrice.Text, out decimal price))
             {
-                mainWindow.Content = paymentPage;
-            }
+                //MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Create an instance of FoodDetails page
+                var paymentPage = new Payment(quantity, price, _productId);
+
+                // Get the main window and set its content to the new page
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                if (mainWindow != null)
+                {
+                    mainWindow.Content = paymentPage;
+                }
+            }   
         }
     }
 }
