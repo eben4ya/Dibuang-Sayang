@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Appview.Data;
+using Appview.ViewModel;
 
 namespace Appview.Views
 {
@@ -20,20 +22,54 @@ namespace Appview.Views
     /// </summary>
     public partial class Payment : UserControl
     {
-        public Payment()
+        private int _productId;
+        public Payment(int quantity, decimal price, int productId)
         {
             InitializeComponent();
+
+            _productId = productId;
+
+            // Store user_id if needed for later use
+            //this.userId = userId;
+
+            //Calculate the total payment
+            decimal totalPayment = quantity * price;
+
+            //Update the UI with the passed data
+            QuantityTextBlock.Text = $"{quantity} Pcs";
+            TotalPaymentTextBlock.Text = $"Rp{totalPayment:N0}";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BayarSekarangButton_Click(object sender, RoutedEventArgs e)
         {
-            var loginPage = new RecommendedFood();
-            var mainWindow = Application.Current.MainWindow as MainWindow;
+            int userId = 1;
+            int quantity = int.Parse(QuantityTextBlock.Text.Split(' ')[0]);
+            decimal totalPayment = decimal.Parse(TotalPaymentTextBlock.Text.Replace("Rp", "").Replace(",", ""));
 
-            if (mainWindow != null)
+            // Insert reservation into the dataabse
+            var db = new Database();
+            bool isInserted = db.InsertReservation(userId, quantity, totalPayment, _productId);
+
+            if (isInserted)
             {
-                mainWindow.Content = loginPage;
+                MessageBox.Show("Payment successful. Redirecting...");
+
+                // Navigate back to FoodRecommendation page
+                var recommendedFoodPage = new RecommendedFood();
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+
+                if (mainWindow != null)
+                {
+                    mainWindow.Content = recommendedFoodPage;
+                }
             }
+            
+            else
+            {
+                MessageBox.Show("Payment failed. Please try again.");
+            }
+
+
         }
     }
 }

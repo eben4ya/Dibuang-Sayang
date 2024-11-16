@@ -52,13 +52,13 @@
 
                             <!-- Values on the right side of the right section -->
                             <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                                <TextBlock Text="3 Pcs" Margin="10,0,0,5" FontWeight="SemiBold" FontSize="16" Foreground="#F83D01"/>
-                                <TextBlock Text="Rp75.000" Margin="10,0,0,40" FontWeight="SemiBold" FontSize="16" Foreground="#FFF" Background="#FE8501" Width="75" HorizontalAlignment="Left" Padding="2"/>
+                                <TextBlock x:Name="QuantityTextBlock" Text="1 Pcs" Margin="10,0,0,5" FontWeight="SemiBold" FontSize="16" Foreground="#F83D01"/>
+                                <TextBlock x:Name="TotalPaymentTextBlock" Text="Rp15.000" Margin="10,0,0,40" FontWeight="SemiBold" FontSize="16" Foreground="#FFF" Background="#FE8501" Width="75" HorizontalAlignment="Left" Padding="2"/>
                             </StackPanel>
 
                             <!-- Payment Button across the entire right section -->
                             <Button Grid.ColumnSpan="2" Content="Bayar Sekarang" Background="#F83D01" Foreground="White" FontWeight="Bold"
-                                 Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow" Click="Button_Click"/>
+                                 Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow" Click="BayarSekarangButton_Click"/>
                         </Grid>
                     </Grid>
                 </Border>
