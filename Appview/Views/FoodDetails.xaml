@@ -67,7 +67,7 @@
                     Grid.Row="1" Grid.Column="0" Margin="10,5,0,5" FontSize="22"/>
 
                 <!-- Description -->
-                <TextBlock Text="Fluffy scrambled eggs paired with tender, golden-brown potatoes create a simple yet satisfying dish. Lightly seasoned and cooked to perfection, this comforting combination is perfect for any meal of the day." 
+                <TextBlock x:Name="ContentDescription" 
                            Foreground="{StaticResource SecondaryTextColor}" 
                            FontSize="16" 
                            TextWrapping="Wrap" 

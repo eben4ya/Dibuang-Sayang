@@ -23,7 +23,7 @@ namespace Appview.Views
     public partial class FoodDetails : UserControl
     {
         private int _stock;
-        public FoodDetails(string Title, decimal Price, int Stock, DateTime Expired)
+        public FoodDetails(string Title, decimal Price, int Stock, DateTime Expired, string Description)
         {
             InitializeComponent();
             DataContext = new GetProductFromDB();
@@ -31,6 +31,7 @@ namespace Appview.Views
             ContentPrice.Text = Price.ToString();
             ContentStock.Text = Stock.ToString();
             ContentExpiry.Text = Expired.ToString();
+            ContentDescription.Text = Description;
 
             _stock = Stock;
         }

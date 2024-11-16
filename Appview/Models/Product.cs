@@ -15,23 +15,26 @@ namespace Appview.Models
 		public DateTime ExpiryDate { get; set; }
 		public decimal ProductPrice { get; set; }
 		public int QuantityAvailable { get; set; }
+		public string ProductDescription { get; set; }
 
 		// Constructor
-		public Product(int productId, string name, DateTime expiryDate, decimal price, int quantityAvailable)
+		public Product(int productId, string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription)
 		{	
 			ProductId = productId;
             ProductName = name;
 			ExpiryDate = expiryDate;
             ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
+			ProductDescription = productDescription;
 		}
 
-		public void UpdateProductDetails(string name, DateTime expiryDate, decimal price, int quantityAvailable)
+		public void UpdateProductDetails(string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription)
 		{
 			ProductName = name;
 			ExpiryDate = expiryDate;
 			ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
+			ProductDescription = productDescription;
 			Console.WriteLine("Product details updated!");
 		}
 

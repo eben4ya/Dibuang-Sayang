@@ -89,6 +89,7 @@
             <StackPanel Margin="5">
                 <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Nama Menu..." x:Name="txtNamaMenu" />
                 <DatePicker Height="37" Margin="5,5,5,5" Padding="5" FontSize="16" Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa"/>
+                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Deskripsi..." x:Name="txtDeskripsi"  />
                 <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
                     <TextBox Width="120" Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Harga..." x:Name="txtHarga" />
                     <TextBox Width="120" Height="34" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Stok..." x:Name="txtStok" />

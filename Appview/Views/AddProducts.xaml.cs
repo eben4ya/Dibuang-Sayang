@@ -39,7 +39,7 @@ namespace Appview.Views
         }
 
         //Add product to db
-        private void AddProductToDatabase(string productName, decimal price, int quantity, DateTime expiryDate)
+        private void AddProductToDatabase(string productName, decimal price, int quantity, DateTime expiryDate, string description)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
 
@@ -48,12 +48,13 @@ namespace Appview.Views
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("INSERT INTO product (productname, price, quantityavailable, expirationdate) VALUES (@name, @price, @quantity, @expiryDate)", connection))
+                    using (var command = new NpgsqlCommand("INSERT INTO product (productname, price, quantityavailable, expirationdate, description) VALUES (@name, @price, @quantity, @expiryDate, @description)", connection))
                     {
                         command.Parameters.AddWithValue("@name", productName);
                         command.Parameters.AddWithValue("@price", price);
                         command.Parameters.AddWithValue("@quantity", quantity);
                         command.Parameters.AddWithValue("@expiryDate", expiryDate);
+                        command.Parameters.AddWithValue("@description", description);
 
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
@@ -79,6 +80,7 @@ namespace Appview.Views
             string productName = txtNamaMenu.Text;
             decimal price;
             int quantity;
+            string description = txtDeskripsi.Text;
 
             if (!decimal.TryParse(txtHarga.Text, out price))
             {
@@ -93,7 +95,7 @@ namespace Appview.Views
             }
             DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;  
 
-            AddProductToDatabase(productName, price, quantity, expiryDate);
+            AddProductToDatabase(productName, price, quantity, expiryDate, description);
         }
     }
 }

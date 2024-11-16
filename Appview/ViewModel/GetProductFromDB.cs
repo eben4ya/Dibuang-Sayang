@@ -31,7 +31,7 @@ namespace Appview.ViewModel
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("SELECT product_id, productname, price, quantityavailable, expirationdate FROM product", connection))
+                    using (var command = new NpgsqlCommand("SELECT product_id, productname, price, quantityavailable, expirationdate, description FROM product", connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
@@ -42,8 +42,9 @@ namespace Appview.ViewModel
                                 decimal price = (decimal)reader["price"];
                                 int quantity = (int)reader["quantityavailable"];
                                 DateTime expiryDate = (DateTime)reader["expirationdate"];
+                                string description = reader["description"].ToString();
 
-                                var newProduct = new Product(productId, productName, expiryDate, price, quantity);
+                                var newProduct = new Product(productId, productName, expiryDate, price, quantity, description);
 
                                 Products.Add(newProduct);
                             }
