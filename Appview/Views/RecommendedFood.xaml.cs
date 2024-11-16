@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Appview.ViewModel.UserSession;
 
 namespace Appview.Views
 {
@@ -25,7 +26,15 @@ namespace Appview.Views
         public RecommendedFood()
         {
             InitializeComponent();
-            DataContext = new GetProductFromDB();
+            int userId = UserSession.UserId;
+
+            var viewModel = new CompositeViewModel
+            {
+                ProductViewModel = new GetProductFromDB(),
+                OrderViewModel = new GetOrdersFromDB(userId)
+            };
+            //DataContext = new GetProductFromDB();
+            DataContext = viewModel;
         }
 
         public void LogoutButton_Click(object sender, RoutedEventArgs e)
@@ -57,6 +66,7 @@ namespace Appview.Views
             var selectedData = border?.DataContext as Product;
 
             var foodDetailsPage = new FoodDetails(
+                selectedData.ProductId,
                 selectedData.ProductName,
                 selectedData.ProductPrice,
                 selectedData.QuantityAvailable,
@@ -71,5 +81,10 @@ namespace Appview.Views
             }
         }
 
+    }
+    public class CompositeViewModel
+    {
+        public GetProductFromDB ProductViewModel { get; set; }
+        public GetOrdersFromDB OrderViewModel { get; set; }
     }
 }
