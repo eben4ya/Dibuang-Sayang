@@ -46,7 +46,7 @@ namespace Appview
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    MessageBox.Show("DB connect successfully", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("DB connected successfully", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Get product from db
                     using (var command = new NpgsqlCommand("SELECT * FROM product;", connection))
