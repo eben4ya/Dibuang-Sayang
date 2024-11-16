@@ -117,5 +117,100 @@ namespace Appview.Data
             return isAuthenticated;
         }
 
+        //Coba coba
+        public int ValidateUser(string username, string password)
+        {
+            int userId = 0;
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT user_id FROM apps_user_modified WHERE username = @username AND password = @password";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+
+                        var result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            userId = Convert.ToInt32(result);
+                        }
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wrong username or password, ", ex.Message);
+            }
+
+            return userId;
+        }
+
+        public bool InsertReservation(int userId, int quantity, decimal totalPrice, int productId)
+        {
+            try
+            {
+                using (var conn = new NpgsqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    //Fixed product_id and hotel_id for now
+                    int hotelId = 1;
+
+                    using (var transaction = conn.BeginTransaction())
+                    {
+                        string insertReservationQuery = @"
+                            INSERT INTO reservation (user_id, product_id, reservationdate, hotel_id, amount_pcs, total_price)
+                            VALUES (@userId, @productId, NOW(), @hotelId, @amountPcs, @totalPrice)";
+
+                        using (var insertCmd = new NpgsqlCommand(insertReservationQuery, conn))
+                        {
+                            insertCmd.Parameters.AddWithValue("@userId", userId);
+                            insertCmd.Parameters.AddWithValue("@productId", productId);
+                            insertCmd.Parameters.AddWithValue("@hotelId", hotelId);
+                            insertCmd.Parameters.AddWithValue("@amountPcs", quantity);
+                            insertCmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+
+                            insertCmd.ExecuteNonQuery();
+                        }
+
+                        string updateStockQuery = @"
+                            UPDATE product
+                            SET quantityavailable = quantityavailable - @quantity
+                            WHERE product_id = @productId AND quantityavailable >= @quantity";
+
+                        using (var updateCmd = new NpgsqlCommand(updateStockQuery, conn))
+                        {
+                            updateCmd.Parameters.AddWithValue("@quantity", quantity);
+                            updateCmd.Parameters.AddWithValue("@productId", productId);
+
+                            int rowsAffected = updateCmd.ExecuteNonQuery();
+
+                            if (rowsAffected == 0)
+                            {
+                                throw new Exception("Insufficent stock available");
+                            }
+                        }
+
+                        // Commit transaction
+                        transaction.Commit();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured: " + ex.Message);
+                return false;
+            }
+        }
+
     }
 }
