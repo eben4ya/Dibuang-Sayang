@@ -13,6 +13,13 @@ namespace Appview.Models
         public int ProductID { get; set; }
         public DateTime ReservationDate { get; set; }
         public string Status { get; set; } // Values: Confirmed, Pending, Canceled
+        public int HotelID { get; set; }
+        public int AmountPcs { get; set; }
+        public decimal TotalPrice { get; set; }
+
+        // New props
+        public string HotelName { get; set; }
+        public string ProductName { get; set; }
 
         public void ConfirmReservation()
         {
