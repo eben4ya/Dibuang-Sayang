@@ -54,7 +54,21 @@
                                         <!-- Order Status -->
                                         <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
                                             <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
-                                            <TextBlock Text="{Binding Status}" FontWeight="SemiBold" Foreground="White" Background="#49FE01" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5"/>
+                                            <TextBlock Text="{Binding Status}" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Background" Value="#49FE01" />
+                                                        <!-- Default background color -->
+
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Menunggu">
+                                                                <Setter Property="Background" Value="#FE0101"/>
+                                                                <!-- Red color when Status is 'Menunggu' -->
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
