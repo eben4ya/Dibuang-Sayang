@@ -94,6 +94,7 @@ namespace Appview.ViewModel
             {
                 connection.Open();
 
+            //  Added new username column & filter only display order with status not confirmed
                 var query = @"
             SELECT 
                 r.reservation_id,
@@ -114,7 +115,9 @@ namespace Appview.ViewModel
             JOIN 
                 product p ON r.product_id = p.product_id
             JOIN 
-                apps_user_modified u ON r.user_id = u.user_id";  // Join with the user table to get the username
+                apps_user_modified u ON r.user_id = u.user_id
+            WHERE
+                 r.status = 'Menunggu'";
 
                 using (var command = new NpgsqlCommand(query, connection))
                 {
