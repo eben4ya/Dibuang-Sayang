@@ -72,7 +72,7 @@
                         VerticalAlignment="Top"
                         Grid.ColumnSpan="2"
                         Grid.Row="0"
-                        Panel.ZIndex="1"/>
+                        Panel.ZIndex="1" Click="Button_Click_1"/>
 
                 <!-- Title -->
                 <TextBlock x:Name="ContentTitle" 
