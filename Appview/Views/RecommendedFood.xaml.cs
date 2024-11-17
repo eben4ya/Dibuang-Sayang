@@ -28,7 +28,7 @@ namespace Appview.Views
             InitializeComponent();
             int userId = UserSession.UserId;
 
-            var viewModel = new CompositeViewModel
+            var viewModel = new CompositeViewModelRecommendedFood
             {
                 ProductViewModel = new GetProductFromDB(),
                 OrderViewModel = new GetOrdersFromDB(userId)
@@ -82,7 +82,7 @@ namespace Appview.Views
         }
 
     }
-    public class CompositeViewModel
+    public class CompositeViewModelRecommendedFood
     {
         public GetProductFromDB ProductViewModel { get; set; }
         public GetOrdersFromDB OrderViewModel { get; set; }

@@ -25,7 +25,7 @@ namespace Appview.Views
         public TodayOrder()
         {
             InitializeComponent();
-            var viewModel = new CompositeViewModel
+            var viewModel = new CompositeViewModelTodayOrder
             {
                OrderViewModel = new GetOrdersFromDB(),
                UpdateOrderStatus = new UpdateOrder()
@@ -56,10 +56,40 @@ namespace Appview.Views
                 mainWindow.Content = loginPage;
             }
         }
+
+        private void Button_Click_Done(object sender, RoutedEventArgs e)
+        {
+            // Mengambil DataContext dari CompositeViewModel
+            var viewModel = DataContext as CompositeViewModelTodayOrder;
+            if (viewModel == null)
+            {
+                MessageBox.Show("Failed to get the view model.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Mengambil reservation yang terhubung dengan tombol
+            var button = sender as Button;
+            if (button != null)
+            {
+                var reservation = button.DataContext as Reservation;
+
+                if (reservation != null)
+                {
+                    // Menggunakan UpdateOrderStatus dari viewModel untuk memperbarui status pesanan
+                    viewModel.UpdateOrderStatus.UpdateOrderStatus(reservation.ReservationID, "Dikonfirmasi");
+                    MessageBox.Show($"Order ID {reservation.ReservationID} has been confirmed!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to get order information!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
     }
 }
 
-public class CompositeViewModel
+public class CompositeViewModelTodayOrder
 {
     public GetOrdersFromDB OrderViewModel { get; set; }
     public UpdateOrder UpdateOrderStatus { get; set; }
