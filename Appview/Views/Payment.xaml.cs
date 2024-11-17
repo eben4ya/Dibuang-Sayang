@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Appview.Data;
 using Appview.ViewModel;
+using static Appview.ViewModel.UserSession;
 
 namespace Appview.Views
 {
@@ -42,7 +43,8 @@ namespace Appview.Views
 
         private void BayarSekarangButton_Click(object sender, RoutedEventArgs e)
         {
-            int userId = 1;
+            int userId = UserSession.UserId;
+
             int quantity = int.Parse(QuantityTextBlock.Text.Split(' ')[0]);
             decimal totalPayment = decimal.Parse(TotalPaymentTextBlock.Text.Replace("Rp", "").Replace(",", ""));
 
