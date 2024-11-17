@@ -60,7 +60,7 @@
             <Button Content="Detail Order" Width="130" Height="35" Background="#FB6501" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" Margin="10, 10, 0, 0" Click="Button_Click"/>
 
             <!-- Order Items -->
-            <ScrollViewer VerticalScrollBarVisibility="Visible" >
+            <ScrollViewer VerticalScrollBarVisibility="Visible" MaxHeight="500" >
                 <ItemsControl ItemsSource="{Binding OrderViewModel.Orders}" Margin="10">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
