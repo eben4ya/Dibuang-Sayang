@@ -11,98 +11,37 @@
 
         <!-- Order List -->
         <ScrollViewer Margin="20,80,20,100" VerticalScrollBarVisibility="Auto">
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,20">
-                <!-- Order Card 1 -->
-                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
-                        </Grid.ColumnDefinitions>
+            <ItemsControl ItemsSource="{Binding OrderViewModel.Orders}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!-- Order Card -->
+                        <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="7*" />
+                                </Grid.ColumnDefinitions>
 
-                        <!-- Order Image -->
-                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <!-- Order Image -->
+                                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                        <!-- Order Details -->
-                        <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
-                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
-                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
-                            </StackPanel>
-                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <!-- Repeat for Other Cards -->
-                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Order Image -->
-                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
-                        <!-- Order Details -->
-                        <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
-                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
-                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
-                            </StackPanel>
-                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Order Image -->
-                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
-                        <!-- Order Details -->
-                        <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
-                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
-                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
-                            </StackPanel>
-                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <Border BorderBrush="OrangeRed" BorderThickness="2" CornerRadius="10" Margin="20" Padding="10" Width="180" Height="140">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Order Image -->
-                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Width="160" Height="120" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-
-                        <!-- Order Details -->
-                        <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock Text="Benaya Imanuel" FontSize="14" FontWeight="Bold" />
-                            <TextBlock Text="Paket A      3 Pcs" FontSize="12" Margin="0,5,0,0" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
-                                <TextBlock Text="Order Time : " FontSize="12" VerticalAlignment="Center" />
-                                <TextBlock Text="09:20" FontSize="12" FontWeight="Bold" Foreground="OrangeRed" />
-                            </StackPanel>
-                            <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
-            </WrapPanel>
+                                <!-- Order Details -->
+                                <StackPanel Grid.Column="1" Margin="10">
+                                    <TextBlock Text="{Binding UserID}" FontSize="14" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding ProductName}" FontSize="12" Margin="0,5,0,0" />
+                                    <TextBlock Text="{Binding AmountPcs, StringFormat='{}{0} Pcs'}" FontSize="12" Margin="0,5,0,0" />
+                                    <Button Content="Done" Width="50" Margin="0,10,0,0" Background="White" BorderBrush="OrangeRed" BorderThickness="2" Foreground="OrangeRed" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
 
         <!-- Buttons -->
