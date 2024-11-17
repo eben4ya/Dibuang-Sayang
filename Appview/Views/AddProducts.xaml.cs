@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Appview.ViewModel;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,6 +26,7 @@ namespace Appview.Views
         public AddProducts()
         {
             InitializeComponent();
+            DataContext = new GetProductFromDB();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
