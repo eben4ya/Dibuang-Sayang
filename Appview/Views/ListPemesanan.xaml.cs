@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Appview.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Appview.ViewModel.UserSession;
 
 namespace Appview.Views
 {
@@ -23,6 +25,14 @@ namespace Appview.Views
         public ListPemesanan()
         {
             InitializeComponent();
+            int userId = UserSession.UserId;
+
+            var viewModel = new CompositeViewModelListPemesanan
+            {
+                OrderViewModel = new GetOrdersFromDB(userId)
+            };
+            //DataContext = new GetProductFromDB();
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,4 +57,9 @@ namespace Appview.Views
             }
         }
     }
+}
+
+public class CompositeViewModelListPemesanan
+{
+    public GetOrdersFromDB OrderViewModel { get; set; }
 }
