@@ -27,7 +27,9 @@ namespace Appview.Views
             InitializeComponent();
             var viewModel = new CompositeViewModel
             {
-                OrderViewModel = new GetOrdersFromDB()
+               OrderViewModel = new GetOrdersFromDB(),
+               UpdateOrderStatus = new UpdateOrder()
+
             };
             //DataContext = new GetProductFromDB();
             DataContext = viewModel;
@@ -55,4 +57,11 @@ namespace Appview.Views
             }
         }
     }
+}
+
+public class CompositeViewModel
+{
+    public GetOrdersFromDB OrderViewModel { get; set; }
+    public UpdateOrder UpdateOrderStatus { get; set; }
+
 }
