@@ -10,63 +10,87 @@
         <!-- Inner Section -->
         <Border Background="#FFF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="750" Height="400" CornerRadius="10" Padding="20">
             <!-- Content -->
-            <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Back Button -->
+                <Button Content="Kembali" 
+                        Width="80" 
+                        Height="30" 
+                        Background="#FE8501" 
+                        Foreground="White" 
+                        FontWeight="Bold"
+                        Margin="10" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Grid.Row="0"
+                        Panel.ZIndex="1"/>
+
                 <!-- Food Image -->
-                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" HorizontalAlignment="Stretch" Height="200" Margin="0, 0, 0, 10"/>
+                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" 
+                       Stretch="UniformToFill" 
+                       HorizontalAlignment="Stretch" 
+                       Height="200" 
+                       Margin="0, 0, 0, 10" 
+                       Grid.Row="0" />
 
-                <!-- Konfirmasi Pembayaran -->
-                <TextBlock Text="Konfirmasi Pembayaran" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 10, 0, 5"/>
+                <!-- StackPanel for Payment Details -->
+                <StackPanel Grid.Row="1">
+                    <!-- Konfirmasi Pembayaran -->
+                    <TextBlock Text="Konfirmasi Pembayaran" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 10, 0, 5"/>
 
-                <!-- Order Detail Grid -->
-                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110">
-                    <Grid Margin="0,10,0,0">
-                        <!-- Define two columns for left and right sections -->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <!-- Left column takes 3 parts -->
-                            <ColumnDefinition Width="2*" />
-                            <!-- Right column takes 2 parts -->
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Left Section -->
-                        <StackPanel Grid.Column="0" Margin="0, 0, 10, 0">
-                            <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18"/>
-                            <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
-                            <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
-                            <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
-                        </StackPanel>
-
-                        <!-- Right Section with Inner Grid -->
-                        <Grid Grid.Column="1" HorizontalAlignment="Stretch">
-                            <!-- Define two inner columns for labels and values -->
+                    <!-- Order Detail Grid -->
+                    <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110">
+                        <Grid Margin="0,10,0,0">
+                            <!-- Define two columns for left and right sections -->
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
 
-                            <!-- Labels on the left side of the right section -->
-                            <StackPanel Grid.Column="0" VerticalAlignment="Top">
-                                <TextBlock Text="Jumlah Dipesan:" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,5"/>
-                                <TextBlock Text="Total Pembayaran:" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,10"/>
+                            <!-- Left Section -->
+                            <StackPanel Grid.Column="0" Margin="0, 0, 10, 0">
+                                <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
+                                <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
+                                <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
                             </StackPanel>
 
-                            <!-- Values on the right side of the right section -->
-                            <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                                <TextBlock x:Name="QuantityTextBlock" Text="1 Pcs" Margin="10,0,0,5" FontWeight="SemiBold" FontSize="16" Foreground="#F83D01"/>
-                                <Border Background="#FE8501" CornerRadius="10" Width="85" HorizontalAlignment="Left" Margin="10,0,0,40">
-                                    <TextBlock x:Name="TotalPaymentTextBlock" Text="Rp15.000" Margin="10,0,0,40" FontWeight="SemiBold" FontSize="16" Foreground="#FFF" Background="#FE8501" Width="75" HorizontalAlignment="Left" Padding="2"/>
+                            <!-- Right Section with Inner Grid -->
+                            <Grid Grid.Column="1" HorizontalAlignment="Stretch">
+                                <!-- Define two inner columns for labels and values -->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Labels on the left side of the right section -->
+                                <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                                    <TextBlock Text="Jumlah Dipesan:" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,5"/>
+                                    <TextBlock Text="Total Pembayaran:" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,10"/>
+                                </StackPanel>
+
+                                <!-- Values on the right side of the right section -->
+                                <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                                    <TextBlock x:Name="QuantityTextBlock" Text="1 Pcs" Margin="10,0,0,5" FontWeight="SemiBold" FontSize="16" Foreground="#F83D01"/>
+                                    <Border Background="#FE8501" CornerRadius="10" Width="85" HorizontalAlignment="Left" Margin="10,0,0,40">
+                                        <TextBlock x:Name="TotalPaymentTextBlock" Text="Rp15.000" FontWeight="SemiBold" FontSize="16" Foreground="#FFF" Background="#FE8501" Width="75" HorizontalAlignment="Center" Padding="2"/>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Payment Button across the entire right section -->
+                                <Border CornerRadius="0">
+                                    <Button Grid.ColumnSpan="2" Content="Bayar Sekarang" Background="#F83D01" Foreground="White" FontWeight="Bold"
+                                            Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow" Click="BayarSekarangButton_Click"/>
                                 </Border>
-                            </StackPanel>
-
-                            <!-- Payment Button across the entire right section -->
-                            <Border CornerRadius="0">
-                                <Button Grid.ColumnSpan="2" Content="Bayar Sekarang" Background="#F83D01" Foreground="White" FontWeight="Bold"
-                          Height="30" VerticalAlignment="Bottom" Margin="0,20,0,0" Cursor="Arrow" Click="BayarSekarangButton_Click"/>
-                            </Border>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Border>
-            </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
