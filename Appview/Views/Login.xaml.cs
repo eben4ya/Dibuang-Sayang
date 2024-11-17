@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Appview.ViewModel.UserSession;
+using Appview.Services;
+
 
 namespace Appview.Views
 {
@@ -24,9 +26,11 @@ namespace Appview.Views
     /// </summary>
     public partial class Login : UserControl
     {
+        private WeatherService weatherService;
         public Login()
         {
             InitializeComponent();
+            weatherService = new WeatherService();
         }
 
         private void RegisterLink_Click(object sender, RoutedEventArgs e)
@@ -41,7 +45,7 @@ namespace Appview.Views
             }
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             var db = new Database();
             string username = txtUsername.Text; // Replace with the actual name of the Username TextBox
@@ -89,6 +93,9 @@ namespace Appview.Views
                     {
                         mainWindow.Content = recommendedFoodPage;
                     }
+
+                    // Fetch Weather Data and Notify
+                    await weatherService.GetWeatherNotificationAsync();
                 }
                 else
                 {
