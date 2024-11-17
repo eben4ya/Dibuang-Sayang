@@ -123,9 +123,13 @@
                         <StackPanel Margin="0 100">
                             <!-- Username Form -->
                             <!--<TextBox x:Name="txtUsername" Width="300" Height="45" Background="White" materialDesign:HintAssist.Hint="Username" Foreground="#FE8501" FontSize="16" FontWeight="SemiBold" Margin="0 20" local:Placeholder.Placeholder="Username..."/>-->
-                            <TextBox x:Name="txtUsername" Width="300" Height="45" Background="White" Foreground="#FE8501" FontSize="16" FontWeight="SemiBold" Margin="0 20" local:Placeholder.Placeholder="Username ..."/>
+                            <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
+                                <TextBox x:Name="txtUsername" Width="300" Height="45" Background="#FE8501" Foreground="#FE8501" FontSize="16" FontWeight="SemiBold"  local:Placeholder.Placeholder="Username ..."/>
+                            </Border>
                             <!-- Password Form -->
-                            <TextBox x:Name="txtPassword" Width="300" Height="45" Background="White" Foreground="#FE8501" FontSize="16" FontWeight="SemiBold" Margin="20" local:Placeholder.Placeholder="Password ..."/>
+                            <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
+                                <TextBox x:Name="txtPassword" Width="300" Height="45" Background="#FE8501" Foreground="Black" FontSize="16" FontWeight="SemiBold"  local:Placeholder.Placeholder="Password ..."/>
+                            </Border>
                             <!-- Login Button -->
                             <Button Content="Login" Width="110" Height="35" Background="White" FontSize="20" FontWeight="SemiBold" Foreground="#FE8501" HorizontalAlignment="Right" Margin="75 20" Click="LoginButton_Click"/>
                             <!-- Belum memiliki akun? -->

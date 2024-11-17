@@ -10,7 +10,9 @@
         <!-- Inner Section -->
         <Border Background="#FFF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="750" Height="400" CornerRadius="10" Padding="20">
 
-            <!-- Content -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                <!-- Content -->
             <StackPanel>
 
                 <StackPanel Orientation="Horizontal" >
@@ -125,6 +127,7 @@
                     </Grid>
                 </Border>
             </StackPanel>
+            </ScrollViewer>
         </Border>
 
     </Grid>
