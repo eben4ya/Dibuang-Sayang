@@ -27,7 +27,7 @@
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
                         Grid.Row="0"
-                        Panel.ZIndex="1"/>
+                        Panel.ZIndex="1" Click="Button_Click"/>
 
                 <!-- Food Image -->
                 <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" 

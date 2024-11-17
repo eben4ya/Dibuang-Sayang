@@ -71,5 +71,16 @@ namespace Appview.Views
 
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var recommendedFoodPage = new RecommendedFood();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = recommendedFoodPage;
+            }
+        }
     }
 }
