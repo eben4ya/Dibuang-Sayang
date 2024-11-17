@@ -22,111 +22,46 @@
                     <!-- Back Button -->
                 </StackPanel>
 
-                <!-- Item 1 -->
-                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110" Margin="0, 0, 0, 5">
-                    <Grid VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <!--Image-->
-                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
+                    <!-- Binding Data Orders -->
+                    <ItemsControl ItemsSource="{Binding OrderViewModel.Orders}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110" Margin="0, 0, 0, 5">
+                                    <Grid VerticalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
 
-                        <!--Food Details-->
-                        <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
-                            <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
-                            <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
-                            <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
-                        </StackPanel>
+                                        <!-- Image -->
+                                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
 
-                        <!--Order Details-->
-                        <StackPanel Grid.Column="2" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Hotel Tentrem YogyaKarta" Foreground="#F83D01" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
-                            <TextBlock Text="Jumlah Dipesan: 3 Pcs" FontWeight="SemiBold"/>
-                            <TextBlock Text="Total Pembayaran: Rp75.000" FontWeight="SemiBold"/>
-                        </StackPanel>
+                                        <!-- Food Details -->
+                                        <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
+                                            <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
+                                            <!--TextBlock Desc-->
+                                        </StackPanel>
 
-                        <!--Order Status-->
-                        <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
-                            <TextBlock Text="Ready" FontWeight="SemiBold" Foreground="White" Background="#49FE01" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+                                        <!-- Order Details -->
+                                        <StackPanel Grid.Column="2" Margin="5, 0, 10, 0">
+                                            <TextBlock Text="{Binding HotelName}" Foreground="#F83D01" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding AmountPcs, StringFormat='Jumlah: {0} Pcs'}" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding TotalPrice, StringFormat='Total: Rp{0}'}" FontWeight="SemiBold"/>
+                                        </StackPanel>
 
-                <!-- Item 2 -->
-                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110" Margin="0, 0, 0, 5">
-                    <Grid VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <!--Image-->
-                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
-
-                        <!--Food Details-->
-                        <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
-                            <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
-                            <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
-                            <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
-                        </StackPanel>
-
-                        <!--Order Details-->
-                        <StackPanel Grid.Column="2" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Hotel Tentrem YogyaKarta" Foreground="#F83D01" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
-                            <TextBlock Text="Jumlah Dipesan: 3 Pcs" FontWeight="SemiBold"/>
-                            <TextBlock Text="Total Pembayaran: Rp75.000" FontWeight="SemiBold"/>
-                        </StackPanel>
-
-                        <!--Order Status-->
-                        <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
-                            <TextBlock Text="Not Ready" FontWeight="SemiBold" Foreground="White" Background="#FE0101" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!-- Item 3 -->
-                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110">
-                    <Grid VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <!--Image-->
-                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
-
-                        <!--Food Details-->
-                        <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
-                            <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
-                            <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
-                            <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
-                        </StackPanel>
-
-                        <!--Order Details-->
-                        <StackPanel Grid.Column="2" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Hotel Tentrem YogyaKarta" Foreground="#F83D01" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
-                            <TextBlock Text="Jumlah Dipesan: 3 Pcs" FontWeight="SemiBold"/>
-                            <TextBlock Text="Total Pembayaran: Rp75.000" FontWeight="SemiBold"/>
-                        </StackPanel>
-
-                        <!--Order Status-->
-                        <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
-                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
-                            <TextBlock Text="Ready" FontWeight="SemiBold" Foreground="White" Background="#49FE01" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-            </StackPanel>
+                                        <!-- Order Status -->
+                                        <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
+                                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Status}" FontWeight="SemiBold" Foreground="White" Background="#49FE01" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
             </ScrollViewer>
         </Border>
 
