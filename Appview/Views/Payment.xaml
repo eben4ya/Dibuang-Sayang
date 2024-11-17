@@ -53,10 +53,8 @@
 
                             <!-- Left Section -->
                             <StackPanel Grid.Column="0" Margin="0, 0, 10, 0">
-                                <TextBlock Text="Scrambled Egg and Potato" FontWeight="Bold" FontSize="18"/>
-                                <TextBlock Text="1. Fluffy Scrambled Eggs" FontWeight="SemiBold"/>
-                                <TextBlock Text="2. Golden-Brown Potatoes" FontWeight="SemiBold"/>
-                                <TextBlock Text="3. Tomato and Soy Sauce" FontWeight="SemiBold"/>
+                                <TextBlock  x:Name="ProductName" FontWeight="Bold" FontSize="18"/>
+                                <TextBlock  x:Name="ProductDesc" FontWeight="SemiBold"/>
                             </StackPanel>
 
                             <!-- Right Section with Inner Grid -->

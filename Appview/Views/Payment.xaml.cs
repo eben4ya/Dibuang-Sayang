@@ -24,7 +24,7 @@ namespace Appview.Views
     public partial class Payment : UserControl
     {
         private int _productId;
-        public Payment(int quantity, decimal price, int productId)
+        public Payment(int quantity, decimal price, int productId, string productName, string descProduct)
         {
             InitializeComponent();
 
@@ -39,6 +39,10 @@ namespace Appview.Views
             //Update the UI with the passed data
             QuantityTextBlock.Text = $"{quantity} Pcs";
             TotalPaymentTextBlock.Text = $"Rp{totalPayment:N0}";
+
+            //Update Product Content
+            ProductName.Text = productName;
+            ProductDesc.Text = descProduct;
         }
 
         private void BayarSekarangButton_Click(object sender, RoutedEventArgs e)
