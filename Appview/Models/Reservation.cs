@@ -21,6 +21,8 @@ namespace Appview.Models
         public string HotelName { get; set; }
         public string ProductName { get; set; }
 
+        public string UserName { get; set; }
+
         public void ConfirmReservation()
         {
             this.Status = "Confirmed";

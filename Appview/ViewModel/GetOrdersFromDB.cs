@@ -95,23 +95,26 @@ namespace Appview.ViewModel
                 connection.Open();
 
                 var query = @"
-                    SELECT 
-                        r.reservation_id,
-                        r.user_id,
-                        r.product_id,
-                        r.reservationdate,
-                        r.status,
-                        r.hotel_id,
-                        r.amount_pcs,
-                        r.total_price,
-                        h.hotel_name,
-                        p.productname
-                    FROM 
-                        reservation r
-                    JOIN 
-                        apps_hotel_modified h ON r.hotel_id = h.hotel_id
-                    JOIN 
-                        product p ON r.product_id = p.product_id";
+            SELECT 
+                r.reservation_id,
+                r.user_id,
+                r.product_id,
+                r.reservationdate,
+                r.status,
+                r.hotel_id,
+                r.amount_pcs,
+                r.total_price,
+                h.hotel_name,
+                p.productname,
+                u.username  
+            FROM 
+                reservation r
+            JOIN 
+                apps_hotel_modified h ON r.hotel_id = h.hotel_id
+            JOIN 
+                product p ON r.product_id = p.product_id
+            JOIN 
+                apps_user_modified u ON r.user_id = u.user_id";  // Join with the user table to get the username
 
                 using (var command = new NpgsqlCommand(query, connection))
                 {
@@ -130,12 +133,14 @@ namespace Appview.ViewModel
                                 AmountPcs = (int)reader["amount_pcs"],
                                 TotalPrice = (decimal)reader["total_price"],
                                 HotelName = reader["hotel_name"].ToString(),
-                                ProductName = reader["productname"].ToString()
+                                ProductName = reader["productname"].ToString(),
+                                UserName = reader["username"].ToString()  // New property for the user's name
                             });
                         }
                     }
                 }
             }
         }
+
     }
 }
