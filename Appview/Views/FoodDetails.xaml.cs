@@ -24,17 +24,21 @@ namespace Appview.Views
     {
         private int _productId;
         private int _stock;
+        private string _productName;
+        private string _productDesc;
         public FoodDetails(int productId, string Title, decimal Price, int Stock, DateTime Expired, string Description)
         {
             InitializeComponent();
             DataContext = new GetProductFromDB();
 
             _productId = productId;
+            _productName = Title;
+            _productDesc = Description;
             ContentTitle.Text = Title;
+            ContentDescription.Text = Description;
             ContentPrice.Text = Price.ToString();
             ContentStock.Text = Stock.ToString();
             ContentExpiry.Text = Expired.ToString();
-            ContentDescription.Text = Description;
             _stock = Stock;
         }
 
@@ -67,7 +71,7 @@ namespace Appview.Views
             {
                 //MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 // Create an instance of FoodDetails page
-                var paymentPage = new Payment(quantity, price, _productId);
+                var paymentPage = new Payment(quantity, price, _productId, _productName, _productDesc);
 
                 // Get the main window and set its content to the new page
                 var mainWindow = Application.Current.MainWindow as MainWindow;
