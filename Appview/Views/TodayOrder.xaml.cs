@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Appview.Models;
+using Appview.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,12 @@ namespace Appview.Views
         public TodayOrder()
         {
             InitializeComponent();
+            var viewModel = new CompositeViewModel
+            {
+                OrderViewModel = new GetOrdersFromDB()
+            };
+            //DataContext = new GetProductFromDB();
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
