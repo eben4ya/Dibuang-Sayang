@@ -22,7 +22,7 @@
 
             <!-- Today Food Items with Horizontal Scroll -->
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="5">
-                <ItemsControl Height="183">
+                <ItemsControl Height="183"  ItemsSource="{Binding Products}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal" />
@@ -34,49 +34,15 @@
                                 <StackPanel Width="150">
                                     <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
                                     <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
-                                    <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
+                                    <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="16" />
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                        <TextBlock Text="Rp25.000" FontWeight="Bold" FontSize="14" />
-                                        <TextBlock Text="8 Pcs left" FontSize="12" Foreground="Red" Margin="5,0,0,0" />
+                                        <TextBlock Text="{Binding ProductPrice}" FontWeight="Bold" FontSize="14" />
+                                        <TextBlock Text="{Binding QuantityAvailable}" FontSize="12" Foreground="White" Margin="5,0,0,0" />
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <!-- Repeat item for example -->
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
-                        <StackPanel Width="150">
-                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="87" Stretch="UniformToFill" Margin="0,0,0,5" />
-                            <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
-                            <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                <TextBlock Text="Rp25.000" FontWeight="Bold" FontSize="14" />
-                                <TextBlock Text="8 Pcs left" FontSize="12" Foreground="Red" Margin="5,0,0,0" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
-                        <StackPanel Width="150">
-                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="87" Stretch="UniformToFill" Margin="0,0,0,5" />
-                            <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
-                            <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                <TextBlock Text="Rp25.000" FontWeight="Bold" FontSize="14" />
-                                <TextBlock Text="8 Pcs left" FontSize="12" Foreground="Red" Margin="5,0,0,0" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
-                    <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
-                        <StackPanel Width="150">
-                            <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="87" Stretch="UniformToFill" Margin="0,0,0,5" />
-                            <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
-                            <TextBlock Text="Scramble Egg and Potato" FontWeight="Bold" FontSize="16" />
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                <TextBlock Text="Rp25.000" FontWeight="Bold" FontSize="14" />
-                                <TextBlock Text="8 Pcs left" FontSize="12" Foreground="Red" Margin="5,0,0,0" />
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
                 </ItemsControl>
             </ScrollViewer>
         </StackPanel>
