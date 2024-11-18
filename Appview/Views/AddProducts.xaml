@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Appview.Views"
+             xmlns:local="clr-namespace:Appview.Utils"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FB6501" Margin="10">
@@ -53,12 +53,12 @@
 
             <!-- Form for Adding Items -->
             <StackPanel Margin="5">
-                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Nama Menu..." x:Name="txtNamaMenu" />
-                <DatePicker Height="37" Margin="5,5,5,5" Padding="5" FontSize="16" Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa"/>
-                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Deskripsi..." x:Name="txtDeskripsi"  />
+                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtNamaMenu" local:Placeholder.Placeholder="Nama Menu"/>
+                <DatePicker Height="37" Margin="5,5,5,5" Padding="5" FontSize="16" Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa" />
+                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White"  x:Name="txtDeskripsi" local:Placeholder.Placeholder="Deskripsi" />
                 <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                    <TextBox Width="120" Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Harga..." x:Name="txtHarga" />
-                    <TextBox Width="120" Height="34" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" Text="Stok..." x:Name="txtStok" />
+                    <TextBox Width="120" Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtHarga" local:Placeholder.Placeholder="Harga" />
+                    <TextBox Width="120" Height="34" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtStok" local:Placeholder.Placeholder="Stok" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
