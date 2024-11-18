@@ -29,6 +29,22 @@ namespace Appview.Views
             DataContext = new GetProductFromDB();
         }
 
+        private void ReloadData()
+        {
+            // Function to reload data from database
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                // Make instance from this page
+                var newPage = new AddProducts();
+
+                // Set main window content to this page
+                mainWindow.Content = newPage;
+            }
+        }
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new TodayOrder();
@@ -95,9 +111,19 @@ namespace Appview.Views
                 MessageBox.Show("Stok harus berupa angka bulat yang valid.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
                 return; // Kembali jika parsing gagal
             }
+
+            if (datePickerTanggalKadaluarsa.SelectedDate == null)
+            {
+                MessageBox.Show("Silakan pilih tanggal kadaluarsa yang valid.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Kembali jika tidak ada tanggal yang dipilih
+            }
+
             DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;  
 
             AddProductToDatabase(productName, price, quantity, expiryDate, description);
+
+            // Reload page to refresh data
+            ReloadData();
         }
     }
 }
