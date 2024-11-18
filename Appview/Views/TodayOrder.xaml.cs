@@ -35,6 +35,21 @@ namespace Appview.Views
             DataContext = viewModel;
         }
 
+        private void ReloadData()
+        {
+            // Function to reload data from database
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                // Make instance from this page
+                var newPage = new TodayOrder();
+
+                // Set main window content to this page
+                mainWindow.Content = newPage;
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new Login();
@@ -84,6 +99,8 @@ namespace Appview.Views
                     MessageBox.Show("Failed to get order information!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+
+            ReloadData();
         }
 
     }
