@@ -5,7 +5,13 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <ApplicationIcon>take-away 1.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="take-away 1.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ViewModels\" />
