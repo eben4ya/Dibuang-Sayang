@@ -8,53 +8,52 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FB6501">
         <!-- Inner Section -->
-        <Border Background="#FFF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="750" Height="400" CornerRadius="10" Padding="20">
-
+        <Border Background="#FFF" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" CornerRadius="10" Padding="20" Margin="40">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-
                 <!-- Content -->
-            <StackPanel>
+                <StackPanel>
+                    <Grid VerticalAlignment="Top" Margin="0, 0, 20, 20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <!-- Lebar kolom kiri fleksibel -->
+                            <ColumnDefinition Width="Auto" />
+                            <!-- Lebar kolom kanan menyesuaikan konten -->
+                        </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal" >
-                    <!-- Judul -->
-                    <TextBlock Text="Pesanan Anda" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 0, 500, 0"/>
-                    <Button Content="Kembali" Width="85" Height="30" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="16" FontWeight="Bold"  Click="Button_Click_1" />
-                    <!-- Back Button -->
-                </StackPanel>
+                        <!-- Judul di kolom kiri -->
+                        <TextBlock Text="Pesanan Anda" Foreground="#F83D01" FontSize="36" FontWeight="Bold" VerticalAlignment="Center" Grid.Column="0"/>
+
+                        <!-- Tombol "Kembali" di kolom kanan -->
+                        <Button Content="Kembali" Width="100" Height="40" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="20" FontWeight="Bold" Click="Button_Click_1" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1"/>
+                    </Grid>
 
                     <!-- Binding Data Orders -->
                     <ItemsControl ItemsSource="{Binding OrderViewModel.Orders}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110" Margin="0, 0, 0, 5">
+                                <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Margin="10" >
                                     <Grid VerticalAlignment="Center">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Image -->
-                                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="0, 0, 0, 0"/>
+                                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="10" Width="360" Height="200"/>
 
                                         <!-- Food Details -->
-                                        <StackPanel Grid.Column="1" Margin="5, 0, 10, 0">
-                                            <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="18" TextWrapping="Wrap"/>
-                                            <!--TextBlock Desc-->
-                                        </StackPanel>
-
-                                        <!-- Order Details -->
-                                        <StackPanel Grid.Column="2" Margin="5, 0, 10, 0">
-                                            <TextBlock Text="{Binding HotelName}" Foreground="#F83D01" FontWeight="Bold" FontSize="14" TextWrapping="Wrap"/>
-                                            <TextBlock Text="{Binding AmountPcs, StringFormat='Jumlah: {0} Pcs'}" FontWeight="SemiBold"/>
-                                            <TextBlock Text="{Binding TotalPrice, StringFormat='Total: Rp{0}'}" FontWeight="SemiBold"/>
+                                        <StackPanel Grid.Column="1" Margin="50, 50">
+                                            <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="28" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding HotelName}" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding AmountPcs, StringFormat='Jumlah: {0} Pcs'}" FontSize="20" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding TotalPrice, StringFormat='Total: Rp{0}'}" FontSize="20" FontWeight="SemiBold"/>
                                         </StackPanel>
 
                                         <!-- Order Status -->
-                                        <StackPanel Grid.Column="3" Margin="5, 0, 10, 0">
-                                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="24" TextWrapping="Wrap"/>
-                                            <TextBlock Text="{Binding Status}" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Padding="10, 5, 10, 5">
+                                        <StackPanel Grid.Column="2" Margin="50, 50">
+                                            <TextBlock Text="Status" Foreground="#F83D01" FontWeight="Bold" FontSize="30" TextWrapping="Wrap" Margin="0, 0, 0, 10"/>
+                                            <TextBlock Text="{Binding Status}" FontSize="24" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="160" Padding="10, 5">
                                                 <TextBlock.Style>
                                                     <Style TargetType="TextBlock">
                                                         <Setter Property="Background" Value="#49FE01" />
@@ -78,7 +77,6 @@
                 </StackPanel>
             </ScrollViewer>
         </Border>
-
     </Grid>
 </UserControl>
 
