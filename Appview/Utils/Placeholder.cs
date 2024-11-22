@@ -24,7 +24,7 @@ namespace Appview.Utils
             if (d is TextBox textBox)
             {
                 // Define the placeholder color
-                var placeholderBrush = Brushes.Gray;
+                var placeholderBrush = Brushes.White;
                 var defaultBrush = Brushes.White; // Default text color
 
                 textBox.GotFocus += (sender, args) =>

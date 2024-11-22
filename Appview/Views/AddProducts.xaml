@@ -8,36 +8,40 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FB6501" Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
         <!-- Today Items Section -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
-            <TextBlock Text="Today Items" FontSize="20" FontWeight="Bold" Foreground="White" Margin="5,0" />
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <TextBlock Text="Menu Hari Ini" FontSize="30" FontWeight="Bold" Foreground="White" Margin="5,0" />
 
             <!-- Today Food Items with Horizontal Scroll -->
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="5">
-                <ItemsControl Height="183"  ItemsSource="{Binding Products}">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="5" MaxHeight="500">
+                <ItemsControl ItemsSource="{Binding Products}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
+                            <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="5" Margin="5">
-                                <StackPanel Width="150">
-                                    <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="100" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                    <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="14" />
-                                    <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="16" />
+                            <Border Background="white" BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="20">
+                                <StackPanel Width="200">
+                                    <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
+                                    <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
+                                    <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="18" />
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                        <TextBlock Text="{Binding ProductPrice}" FontWeight="Bold" FontSize="14" />
-                                        <TextBlock Text="{Binding QuantityAvailable}" FontSize="12" Foreground="White" Margin="5,0,0,0" />
+                                        <TextBlock Text="{Binding ExpiryDate}" FontSize="14" Margin="0,0,10,0" />
+                                        <TextBlock Text="⭐ 4.7" FontSize="14" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
+                                        <TextBlock Text="{Binding ProductPrice, StringFormat='Rp {0}'}" FontWeight="Bold" FontSize="16" />
+                                        <TextBlock Text="{Binding QuantityAvailable, StringFormat='Stok: {0}'}" FontSize="16" Foreground="#F83D01" Margin="10,0,0,0" />
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -49,23 +53,34 @@
 
         <!-- Adding Items Section -->
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="5">
-            <TextBlock Text="Adding Items" FontSize="20" FontWeight="Bold" Foreground="White" Margin="5,0" />
+            <TextBlock Text="Formulir Menu" FontSize="24" FontWeight="Bold" Foreground="White" Margin="5,0" />
 
             <!-- Form for Adding Items -->
-            <StackPanel Margin="5">
-                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtNamaMenu" local:Placeholder.Placeholder="Nama Menu"/>
-                <DatePicker Height="37" Margin="5,5,5,5" Padding="5" FontSize="16" Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa" />
-                <TextBox Height="30" Margin="5,5,5,5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White"  x:Name="txtDeskripsi" local:Placeholder.Placeholder="Deskripsi" />
-                <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
-                    <TextBox Width="120" Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtHarga" local:Placeholder.Placeholder="Harga" />
-                    <TextBox Width="120" Height="34" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtStok" local:Placeholder.Placeholder="Stok" />
+            <Grid Margin="5,5,5,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- StackPanel untuk input Nama, Tanggal, dan Deskripsi -->
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5">
+                    <TextBox Height="30" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtNamaMenu" local:Placeholder.Placeholder="Nama Menu"/>
+                    <DatePicker Height="37" Margin="5" Padding="5" FontSize="16"  Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa"/>
+                    <TextBox Height="60" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtDeskripsi" local:Placeholder.Placeholder="Deskripsi"/>
                 </StackPanel>
-            </StackPanel>
+
+                <!-- StackPanel untuk input Harga dan Stok -->
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
+                    <TextBox Width="120" Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtHarga" local:Placeholder.Placeholder="Harga"/>
+                    <TextBox Width="120" Height="34" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtStok" local:Placeholder.Placeholder="Stok"/>
+                </StackPanel>
+            </Grid>
+
         </StackPanel>
 
         <!-- Add Image Section -->
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="5" Background="White">
-            <TextBlock Text="Add Image" FontSize="18" FontWeight="Bold" Foreground="#FB6501" />
+            <TextBlock Text="Unggah Gambar" FontSize="24" FontWeight="Bold" Foreground="#FB6501" />
             <Button Content="+" Background="#FB6501" Foreground="White" FontWeight="Bold" Width="30" Height="30" HorizontalAlignment="Left" Margin="5" />
 
             <!-- Image Preview Section -->
@@ -81,13 +96,13 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <!-- Repeat image preview for example -->
-                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="5" />
+                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Width="120" Stretch="UniformToFill" Margin="5" />
             </ItemsControl>
         </StackPanel>
 
         <!-- Buttons -->
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,35,0,0">
-            <Button Content="Tambahkan Menu" Width="150" Height="50" Background="#FF6F00" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20" Click="Button_Click_1" />
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,200,0,0">
+            <Button Content="Tambahkan Menu" Width="200" Height="50" Background="#FF6F00" Foreground="White" FontSize="20" FontWeight="Bold" Margin="20" Click="Button_Click_1" />
             <Button Content="Kembali" Width="150" Height="50" Background="White" BorderBrush="#FF6F00" BorderThickness="2" Foreground="#FF6F00" FontSize="20" FontWeight="Bold" Margin="20" Click="Button_Click" />
         </StackPanel>
     </Grid>

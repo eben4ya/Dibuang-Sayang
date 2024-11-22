@@ -45,11 +45,11 @@
                                     <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="18" />
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
                                         <TextBlock Text="{Binding ExpiryDate}" FontSize="14" Margin="0,0,10,0" />
-                                        <TextBlock Text="4.7" FontSize="14" />
+                                        <TextBlock Text="⭐ 4.7" FontSize="14" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
-                                        <TextBlock Text="{Binding ProductPrice}" FontWeight="Bold" FontSize="16" />
-                                        <TextBlock Text="{Binding QuantityAvailable}" FontSize="14" Foreground="Gray" Margin="10,0,0,0" />
+                                        <TextBlock Text="{Binding ProductPrice, StringFormat='Rp {0}'}" FontWeight="Bold" FontSize="16" />
+                                        <TextBlock Text="{Binding QuantityAvailable, StringFormat='Stok: {0}'}" FontSize="14" Foreground="#F83D01" Margin="10,0,0,0" />
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
