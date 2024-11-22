@@ -28,17 +28,17 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" Background="white">
             <TextBlock Text="Rekomen based on expiring" FontSize="24" FontWeight="Bold" Foreground="#F83D01" Margin="10,10, 0, 0" />
 
-            <!-- Recommended Food Items with Horizontal Scroll -->
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Margin="10">
+            <!-- Recommended Food Items with Vertical Scroll -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="10" MaxHeight="660">
                 <ItemsControl ItemsSource="{Binding ProductViewModel.Products}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" />
+                            <WrapPanel Orientation="Horizontal" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10" MouseDown="Border_MouseDown">
+                            <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="20" MouseDown="Border_MouseDown">
                                 <StackPanel Width="200">
                                     <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                                     <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
@@ -72,10 +72,6 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="0,0,10,0" />
                                     <StackPanel>
-                                        <!--<TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
-                                    <TextBlock Text="Scramble Egg Potato" FontSize="14" />
-                                    <TextBlock Text="Estimasi tunggu: -" FontSize="12" />
-                                    <TextBlock Text="Status: Ready" FontSize="14" FontWeight="Bold" Foreground="#FB6501" />-->
                                         <TextBlock Text="{Binding HotelName}" FontWeight="SemiBold" FontSize="16" />
                                         <TextBlock Text="{Binding ProductName}" FontSize="14" />
                                         <TextBlock Text="{Binding Status}" FontSize="12" />
@@ -85,18 +81,6 @@
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
-                    <!-- Add as many order items as needed here -->
-                    <!--<Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="0,0,10,0" />
-                        <StackPanel>
-                            <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
-                            <TextBlock Text="Scramble Egg Potato" FontSize="14" />
-                            <TextBlock Text="Estimasi tunggu: 15 Min" FontSize="12" />
-                            <TextBlock Text="Status: Packing" FontSize="14" FontWeight="Bold" Foreground="#FB6501" />
-                        </StackPanel>
-                    </StackPanel>
-                </Border>-->
                 </ItemsControl>
             </ScrollViewer>
             <Button Content="Logout" Width="100" Height="35" Background="#FB6501" FontSize="20" FontWeight="SemiBold" Foreground="White" HorizontalAlignment="Center" Click="LogoutButton_Click" Margin="0, 100, 0, 0"/>
