@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Appview.Models
 {
@@ -16,9 +17,10 @@ namespace Appview.Models
 		public decimal ProductPrice { get; set; }
 		public int QuantityAvailable { get; set; }
 		public string ProductDescription { get; set; }
+		public BitmapImage ProductImage { get; set; }
 
 		// Constructor
-		public Product(int productId, string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription)
+		public Product(int productId, string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription, BitmapImage productImage)
 		{	
 			ProductId = productId;
             ProductName = name;
@@ -26,15 +28,17 @@ namespace Appview.Models
             ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
 			ProductDescription = productDescription;
+			ProductImage = productImage;
 		}
 
-		public void UpdateProductDetails(string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription)
+		public void UpdateProductDetails(string name, DateTime expiryDate, decimal price, int quantityAvailable, string productDescription, BitmapImage productImage)
 		{
 			ProductName = name;
 			ExpiryDate = expiryDate;
 			ProductPrice = price;
 			QuantityAvailable = quantityAvailable;
 			ProductDescription = productDescription;
+			ProductImage = productImage;
 			Console.WriteLine("Product details updated!");
 		}
 
