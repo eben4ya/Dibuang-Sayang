@@ -9,6 +9,8 @@ using System.Windows;
 using System.Collections.ObjectModel;
 using Appview.Models;
 using static Appview.ViewModel.UserSession;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace Appview.ViewModel
 {
@@ -50,7 +52,8 @@ namespace Appview.ViewModel
                         r.amount_pcs,
                         r.total_price,
                         h.hotel_name,
-                        p.productname
+                        p.productname,
+                        p.image_data
                     FROM 
                         reservation r
                     JOIN 
@@ -68,6 +71,15 @@ namespace Appview.ViewModel
                     {
                         while (reader.Read())
                         {
+                            BitmapImage productImage = null;
+                            if (reader["image_data"] != DBNull.Value)
+                            {
+                                productImage = ConvertToBitmapImage((byte[])reader["image_data"]);
+                            }
+                            else
+                            {
+                                productImage = LoadPlaceHolderImage();
+                            }
                             Orders.Add(new Reservation
                             {
                                 ReservationID = (int)reader["reservation_id"],
@@ -79,11 +91,39 @@ namespace Appview.ViewModel
                                 AmountPcs = (int)reader["amount_pcs"],
                                 TotalPrice = (decimal)reader["total_price"],
                                 HotelName = reader["hotel_name"].ToString(),
-                                ProductName = reader["productname"].ToString()
+                                ProductName = reader["productname"].ToString(),
+                                ProductImage = productImage
                             });
                         }
                     }
                 }
+            }
+        }
+        private BitmapImage LoadPlaceHolderImage()
+        {
+            var placeholder = new BitmapImage();
+            placeholder.BeginInit();
+            placeholder.UriSource = new Uri("https://i.ibb.co.com/pnRxBcK/food-icon.jpg");
+            placeholder.CacheOption = BitmapCacheOption.OnLoad;
+            placeholder.EndInit();
+
+            return placeholder;
+        }
+
+        private BitmapImage ConvertToBitmapImage(byte[] imageData)
+        {
+            if (imageData == null | imageData.Length == 0) return null;
+
+            using (var stream = new MemoryStream(imageData))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                image.Freeze();
+
+                return image;
             }
         }
 
@@ -107,6 +147,7 @@ namespace Appview.ViewModel
                 r.total_price,
                 h.hotel_name,
                 p.productname,
+                p.image_data,
                 u.username  
             FROM 
                 reservation r
@@ -125,6 +166,15 @@ namespace Appview.ViewModel
                     {
                         while (reader.Read())
                         {
+                            BitmapImage productImage = null;
+                            if (reader["image_data"] != DBNull.Value)
+                            {
+                                productImage = ConvertToBitmapImage((byte[])reader["image_data"]);
+                            }
+                            else
+                            {
+                                productImage = LoadPlaceHolderImage();
+                            }
                             Orders.Add(new Reservation
                             {
                                 ReservationID = (int)reader["reservation_id"],
@@ -137,7 +187,8 @@ namespace Appview.ViewModel
                                 TotalPrice = (decimal)reader["total_price"],
                                 HotelName = reader["hotel_name"].ToString(),
                                 ProductName = reader["productname"].ToString(),
-                                UserName = reader["username"].ToString()  // New property for the user's name
+                                UserName = reader["username"].ToString(),  // New property for the user's name
+                                ProductImage = productImage
                             });
                         }
                     }
