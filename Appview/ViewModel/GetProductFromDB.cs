@@ -9,6 +9,10 @@ using System.Configuration;
 using System.ComponentModel;
 using Appview.Models;
 using System.Windows;
+using System.Windows.Media.Imaging;
+using System.Printing;
+using Microsoft.Extensions.Logging.Abstractions;
+using System.IO;
 
 namespace Appview.ViewModel
 {
@@ -31,7 +35,7 @@ namespace Appview.ViewModel
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("SELECT product_id, productname, price, quantityavailable, expirationdate, description FROM product", connection))
+                    using (var command = new NpgsqlCommand("SELECT product_id, productname, price, quantityavailable, expirationdate, description, image_data FROM product", connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
@@ -44,7 +48,17 @@ namespace Appview.ViewModel
                                 DateTime expiryDate = (DateTime)reader["expirationdate"];
                                 string description = reader["description"].ToString();
 
-                                var newProduct = new Product(productId, productName, expiryDate, price, quantity, description);
+                                BitmapImage productImage = null;
+                                if (reader["image_data"] != DBNull.Value)
+                                {
+                                    productImage = ConvertToBitmapImage((byte[])reader["image_data"]);
+                                }
+                                else
+                                {
+                                    productImage = LoadPlaceHolderImage();
+                                }
+
+                                var newProduct = new Product(productId, productName, expiryDate, price, quantity, description, productImage);
 
                                 Products.Add(newProduct);
                             }
@@ -56,6 +70,34 @@ namespace Appview.ViewModel
             {
                 // Handle errors here
                 MessageBox.Show($"Failed to load products: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private BitmapImage LoadPlaceHolderImage()
+        {
+            var placeholder = new BitmapImage();
+            placeholder.BeginInit();
+            placeholder.UriSource = new Uri("https://i.ibb.co.com/pnRxBcK/food-icon.jpg");
+            placeholder.CacheOption = BitmapCacheOption.OnLoad;
+            placeholder.EndInit();
+
+            return placeholder;
+        }
+
+        private BitmapImage ConvertToBitmapImage(byte[] imageData)
+        {
+            if (imageData == null | imageData.Length == 0) return null;
+
+            using (var stream = new MemoryStream(imageData))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                image.Freeze();
+
+                return image;
             }
         }
 
@@ -80,7 +122,5 @@ namespace Appview.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
-
 }
