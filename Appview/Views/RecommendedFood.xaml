@@ -40,7 +40,8 @@
                         <DataTemplate>
                             <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="20" MouseDown="Border_MouseDown">
                                 <StackPanel Width="200">
-                                    <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
+                                    <!--<Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />-->
+                                    <Image Source="{Binding ProductImage}" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
                                     <TextBlock Text="Hotel Tentrem Yogyakarta" FontWeight="SemiBold" FontSize="16" />
                                     <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="18" />
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
@@ -70,7 +71,8 @@
                         <DataTemplate>
                             <Border BorderBrush="#F83D01" BorderThickness="1" CornerRadius="10" Padding="10" Margin="10">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="0,0,10,0" />
+                                    <!--<Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Height="60" Width="60" Stretch="UniformToFill" Margin="0,0,10,0" />-->
+                                    <Image Source="{Binding ProductImage}" Height="60" Width="60" Stretch="UniformToFill" Margin="0,0,10,0" />
                                     <StackPanel>
                                         <TextBlock Text="{Binding HotelName}" FontWeight="SemiBold" FontSize="16" />
                                         <TextBlock Text="{Binding ProductName}" FontSize="14" />
