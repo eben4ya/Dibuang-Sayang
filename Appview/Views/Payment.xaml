@@ -30,7 +30,8 @@
                         Panel.ZIndex="1" Click="Button_Click"/>
 
                 <!-- Food Image -->
-                <Image Source="https://i.ibb.co.com/85cbJm3/Food.png" 
+                <Image 
+                       Source="{Binding ProductImage}" 
                        Stretch="UniformToFill" 
                        HorizontalAlignment="Stretch" 
                        Height="200" 

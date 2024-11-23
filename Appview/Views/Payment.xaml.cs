@@ -43,6 +43,8 @@ namespace Appview.Views
             //Update Product Content
             ProductName.Text = productName;
             ProductDesc.Text = descProduct;
+
+            DataContext = new GetProductFromDB();
         }
 
         private void BayarSekarangButton_Click(object sender, RoutedEventArgs e)
