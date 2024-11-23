@@ -3,6 +3,7 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace Appview.Views
 {
-    /// <summary>
-    /// Interaction logic for AddProducts.xaml
-    /// </summary>
     public partial class AddProducts : UserControl
     {
         public AddProducts()
@@ -44,7 +42,6 @@ namespace Appview.Views
             }
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new TodayOrder();
@@ -57,7 +54,7 @@ namespace Appview.Views
         }
 
         //Add product to db
-        private void AddProductToDatabase(string productName, decimal price, int quantity, DateTime expiryDate, string description)
+        private void AddProductToDatabase(string productName, decimal price, int quantity, DateTime expiryDate, string description, byte[] imageData)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
 
@@ -66,13 +63,16 @@ namespace Appview.Views
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
-                    using (var command = new NpgsqlCommand("INSERT INTO product (productname, price, quantityavailable, expirationdate, description) VALUES (@name, @price, @quantity, @expiryDate, @description)", connection))
+                    using (var command = new NpgsqlCommand(
+                        "INSERT INTO product (productname, price, quantityavailable, expirationdate, description, image_data) VALUES (@name, @price, @quantity, @expiryDate, @description, @imageData)"
+                        , connection))
                     {
                         command.Parameters.AddWithValue("@name", productName);
                         command.Parameters.AddWithValue("@price", price);
                         command.Parameters.AddWithValue("@quantity", quantity);
                         command.Parameters.AddWithValue("@expiryDate", expiryDate);
                         command.Parameters.AddWithValue("@description", description);
+                        command.Parameters.AddWithValue("@imageData", (object?)imageData ?? DBNull.Value);
 
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
@@ -92,7 +92,7 @@ namespace Appview.Views
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void TambahMenu_Click(object sender, RoutedEventArgs e)
         {
             // Get data from the input fields
             string productName = txtNamaMenu.Text;
@@ -120,10 +120,47 @@ namespace Appview.Views
 
             DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;  
 
-            AddProductToDatabase(productName, price, quantity, expiryDate, description);
+            AddProductToDatabase(productName, price, quantity, expiryDate, description, selectedImageData);
 
             // Reload page to refresh data
             ReloadData();
+        }
+
+        private byte[] selectedImageData;
+
+        private void AddImage_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Image Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png",
+                Title = "Select an image"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+
+                // Load the image into a byte array
+                selectedImageData = File.ReadAllBytes(selectedFilePath);
+
+                // Preview the image
+                var imageSource = new BitmapImage(new Uri(selectedFilePath));
+                var imagePreview = new Image { Source = imageSource, Height = 120, Width = 120, Margin = new Thickness(5) };
+
+                // Display the image preview on the UI
+                imgPreview.Source = imageSource;
+            }
+        }
+
+        private void ButtonKembali_Click(object sender, RoutedEventArgs e)
+        {
+            var todayOrderPage = new TodayOrder();
+            var mainWindow = Application.Current.MainWindow as MainWindow;
+
+            if (mainWindow != null)
+            {
+                mainWindow.Content = todayOrderPage;
+            }
         }
     }
 }
