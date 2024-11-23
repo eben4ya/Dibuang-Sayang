@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Appview.Models
 {
@@ -22,6 +23,7 @@ namespace Appview.Models
         public string ProductName { get; set; }
 
         public string UserName { get; set; }
+        public BitmapImage ProductImage { get; set; }
 
         public void ConfirmReservation()
         {
