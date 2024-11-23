@@ -50,7 +50,7 @@ namespace Appview.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLogOut_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new Login();
             var mainWindow = Application.Current.MainWindow as MainWindow;
@@ -61,7 +61,7 @@ namespace Appview.Views
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void TambahMenu_Click(object sender, RoutedEventArgs e)
         {
             var loginPage = new AddProducts();
             var mainWindow = Application.Current.MainWindow as MainWindow;
@@ -72,7 +72,7 @@ namespace Appview.Views
             }
         }
 
-        private void Button_Click_Done(object sender, RoutedEventArgs e)
+        private void ButtonDone_Click(object sender, RoutedEventArgs e)
         {
             // Mengambil DataContext dari CompositeViewModel
             var viewModel = DataContext as CompositeViewModelTodayOrder;
