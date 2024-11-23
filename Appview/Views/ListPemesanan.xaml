@@ -40,7 +40,8 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Image -->
-                                        <Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="10" Width="360" Height="200"/>
+                                        <!--<Image Grid.Column="0" Source="https://i.ibb.co.com/85cbJm3/Food.png" VerticalAlignment="Center" Stretch="UniformToFill" Margin="10" Width="360" Height="200"/>-->
+                                        <Image Grid.Column="0" Source="{Binding ProductImage}" VerticalAlignment="Center" Stretch="UniformToFill" Margin="10" Width="360" Height="200"/>
 
                                         <!-- Food Details -->
                                         <StackPanel Grid.Column="1" Margin="50, 50">
