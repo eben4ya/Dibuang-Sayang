@@ -1,6 +1,9 @@
 ﻿using Appview.Data;
+using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace Appview.Views
 {
-    /// <summary>
-    /// Interaction logic for Register.xaml
-    /// </summary>
     public partial class Register : UserControl
     {
         public Register()
@@ -127,6 +127,76 @@ namespace Appview.Views
             else
             {
                 MessageBox.Show("Registration failed. Try again.");
+            }
+        }
+
+        public BitmapImage LoadDefaultLogo()
+        {
+            BitmapImage placeholder = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand("SELECT image_data FROM static_images WHERE image_name = @imageName", connection))
+                    {
+                        command.Parameters.AddWithValue("@imageName", "default_image");
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read() && reader["image_data"] != DBNull.Value)
+                            {
+                                placeholder = ConvertToBitmapImage((byte[])reader["image_data"]);
+                                logoImageControl.Source = placeholder;
+                            }
+                        }
+                    }
+                }
+
+                // If no image found in database, handle it gracefully
+                if (placeholder == null)
+                {
+                    MessageBox.Show("Placeholder image not found in database. Using fallback default.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    placeholder = new BitmapImage();
+                    placeholder.BeginInit();
+                    placeholder.UriSource = new Uri("https://i.ibb.co.com/XJNy0Gz/food-icon.jpg");
+                    placeholder.CacheOption = BitmapCacheOption.OnLoad;
+                    placeholder.EndInit();
+                    logoImageControl.Source = placeholder;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle database connection or query errors
+                MessageBox.Show($"Failed to load placeholder image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                placeholder = new BitmapImage();
+                placeholder.BeginInit();
+                placeholder.UriSource = new Uri("https://i.ibb.co.com/XJNy0Gz/food-icon.jpg");
+                placeholder.CacheOption = BitmapCacheOption.OnLoad;
+                placeholder.EndInit();
+                logoImageControl.Source = placeholder;
+
+            }
+
+            return placeholder;
+        }
+        private BitmapImage ConvertToBitmapImage(byte[] imageData)
+        {
+            if (imageData == null | imageData.Length == 0) return null;
+
+            using (var stream = new MemoryStream(imageData))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                image.Freeze();
+
+                return image;
             }
         }
     }

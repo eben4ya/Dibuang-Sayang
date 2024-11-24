@@ -75,11 +75,50 @@ namespace Appview.ViewModel
 
         private BitmapImage LoadPlaceHolderImage()
         {
-            var placeholder = new BitmapImage();
-            placeholder.BeginInit();
-            placeholder.UriSource = new Uri("https://i.ibb.co.com/pnRxBcK/food-icon.jpg");
-            placeholder.CacheOption = BitmapCacheOption.OnLoad;
-            placeholder.EndInit();
+            BitmapImage placeholder = null;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand("SELECT image_data FROM static_images WHERE image_name = @imageName", connection))
+                    {
+                        command.Parameters.AddWithValue("@imageName", "food_icon");
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read() && reader["image_data"] != DBNull.Value)
+                            {
+                                placeholder = ConvertToBitmapImage((byte[])reader["image_data"]);
+                            }
+                        }
+                    }
+                }
+
+                // If no image found in database, handle it gracefully
+                if (placeholder == null)
+                {
+                    MessageBox.Show("Placeholder image not found in database. Using fallback default.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    placeholder = new BitmapImage();
+                    placeholder.BeginInit();
+                    placeholder.UriSource = new Uri("https://i.ibb.co.com/XJNy0Gz/food-icon.jpg");
+                    placeholder.CacheOption = BitmapCacheOption.OnLoad;
+                    placeholder.EndInit();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle database connection or query errors
+                MessageBox.Show($"Failed to load placeholder image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                placeholder = new BitmapImage();
+                placeholder.BeginInit();
+                placeholder.UriSource = new Uri("https://i.ibb.co.com/XJNy0Gz/food-icon.jpg");
+                placeholder.CacheOption = BitmapCacheOption.OnLoad;
+                placeholder.EndInit();
+            }
 
             return placeholder;
         }
