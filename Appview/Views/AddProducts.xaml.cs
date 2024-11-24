@@ -162,5 +162,10 @@ namespace Appview.Views
                 mainWindow.Content = todayOrderPage;
             }
         }
+
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
