@@ -122,6 +122,12 @@ namespace Appview.Views
 
             DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;
 
+            if (selectedImageData == null)
+            {
+                MessageBox.Show("Silakan pilih gambar produk.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Kembali jika gambar belum dipilih
+            }
+
             if (editProductId.HasValue)
             {
                 EditProductInDatabase(editProductId.Value, productName, price, quantity, expiryDate, description, selectedImageData);
