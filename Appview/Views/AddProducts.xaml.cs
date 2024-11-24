@@ -163,9 +163,46 @@ namespace Appview.Views
             }
         }
 
+        private void DeleteProductFromDatabase(int productId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand("DELETE FROM product WHERE product_id = @productId", connection))
+                    {
+                        command.Parameters.AddWithValue("@productId", productId);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product deleted successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete product.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to delete product: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void DeleteProduct_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is Button button && button.CommandParameter is int productId)
+            {
+                DeleteProductFromDatabase(productId);
 
+                // Reload page to refresh data
+                ReloadData();
+            }
         }
     }
 }
