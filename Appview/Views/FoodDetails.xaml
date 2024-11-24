@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" Height="450">
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <!-- Define reusable resources for colors and styles -->
@@ -41,88 +41,103 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#FB6501">
-        <!-- Main content container -->
-        <Border Background="#FFF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="780" Height="420" CornerRadius="10" Padding="20">
-            <Grid Margin="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Image -->
-                <!--<Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />-->
-                <Image Source="{Binding ProductImage}" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
-
-                <!-- Back Button -->
-                <Button Content="Kembali" 
-                        Width="80" 
-                        Height="30" 
-                        Background="{StaticResource AccentColor}" 
-                        Foreground="White" 
-                        FontWeight="Bold"
-                        Margin="10" 
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="0"
-                        Panel.ZIndex="1" Click="Button_Click_1"/>
-
-                <!-- Title -->
-                <TextBlock x:Name="ContentTitle" 
-                    Style="{StaticResource SectionTitleStyle}"
-                    Foreground="{StaticResource AccentColor}"
-                    Grid.Row="1" Grid.Column="0" Margin="10,5,0,5" FontSize="22"/>
-
-                <!-- Description -->
-                <TextBlock x:Name="ContentDescription" 
-                           Foreground="{StaticResource SecondaryTextColor}" 
-                           FontSize="16" 
-                           TextWrapping="Wrap" 
-                           Margin="10,0,5,11" 
-                           Grid.Row="2" Grid.Column="0" Grid.RowSpan="1"/>
-
-                <!-- Details section -->
-                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="10,5,110,5">
-                    <TextBlock Text="Hotel Tentrem Yogyakarta" FontSize="21" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Height="35" Width="319"/>
-                </StackPanel>
-
-                <!-- Period and Stock Info -->
-                <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Margin="10,0,10,10">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                        <TextBlock Text="Periode" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="0,0,5,0" Height="28"/>
-                        <Border Background="{StaticResource AccentColor}" CornerRadius="10" Height="40" Width="208">
-                            <TextBlock x:Name="ContentExpiry" FontSize="18" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Stock" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0"/>
-                        <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="66">
-                            <TextBlock x:Name="ContentStock" Text="Pcs" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
-                        </Border>
-                        <TextBlock Text="Harga" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0" Height="31"/>
-                        <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="69">
-                            <TextBlock x:Name="ContentPrice" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
-                        </Border>
-                    </StackPanel>
-                </StackPanel>
-
-                <!-- Action buttons -->
-                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                    <Button Content="-" Style="{StaticResource ButtonStyle}" Width="38" Click="Decrease_Click"/>
-                    <TextBlock x:Name="QuantityTextBlock" Text="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
-                    <Button Content="+" Style="{StaticResource ButtonStyle}" Width="38" Click="Increase_Click"/>
-                    <Button Content="Pesan" Background="{StaticResource AccentColor}" Foreground="White" Padding="10,5" Margin="10,0" FontWeight="Bold" Width="59" Click="Pesan_Click"/>
-                </StackPanel>
-            </Grid>
+    <Grid>
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#F83D01" Offset="0"/>
+                    <GradientStop Color="#FE8501" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
         </Border>
+        
+        <Viewbox Stretch="Uniform">
+            <Grid Width="800" Height="450">
+                <!-- Main content container -->
+                <Border Background="#FFF" VerticalAlignment="Center" HorizontalAlignment="Center" Width="780" Height="420" CornerRadius="10" Padding="20">
+                    <Grid Margin="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Image -->
+                        <!--<Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />-->
+                        <Image Source="{Binding ProductImage}" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
+
+                        <!-- Back Button -->
+                        <Button Content="Kembali" 
+                Width="80" 
+                Height="30" 
+                Background="{StaticResource AccentColor}" 
+                Foreground="White" 
+                FontWeight="Bold"
+                Margin="10" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                Panel.ZIndex="1" Click="Button_Click_1"/>
+
+                        <!-- Title -->
+                        <TextBlock x:Name="ContentTitle" 
+            Style="{StaticResource SectionTitleStyle}"
+            Foreground="{StaticResource AccentColor}"
+            Grid.Row="1" Grid.Column="0" Margin="10,5,0,5" FontSize="22"/>
+
+                        <!-- Description -->
+                        <TextBlock x:Name="ContentDescription" 
+                   Foreground="{StaticResource SecondaryTextColor}" 
+                   FontSize="16" 
+                   TextWrapping="Wrap" 
+                   Margin="10,0,5,11" 
+                   Grid.Row="2" Grid.Column="0" Grid.RowSpan="1"/>
+
+                        <!-- Details section -->
+                        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Margin="10,5,110,5">
+                            <TextBlock Text="Hotel Tentrem Yogyakarta" FontSize="21" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Height="35" Width="319"/>
+                        </StackPanel>
+
+                        <!-- Period and Stock Info -->
+                        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Margin="10,0,10,10">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="Periode" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="0,0,5,0" Height="28"/>
+                                <Border Background="{StaticResource AccentColor}" CornerRadius="10" Height="40" Width="208">
+                                    <TextBlock x:Name="ContentExpiry" FontSize="18" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Stock" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0"/>
+                                <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="66">
+                                    <TextBlock x:Name="ContentStock" Text="Pcs" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
+                                </Border>
+                                <TextBlock Text="Harga" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0" Height="31"/>
+                                <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="69">
+                                    <TextBlock x:Name="ContentPrice" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Action buttons -->
+                        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <Button Content="-" Style="{StaticResource ButtonStyle}" Width="38" Click="Decrease_Click"/>
+                            <TextBlock x:Name="QuantityTextBlock" Text="1" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
+                            <Button Content="+" Style="{StaticResource ButtonStyle}" Width="38" Click="Increase_Click"/>
+                            <Button Content="Pesan" Background="{StaticResource AccentColor}" Foreground="White" Padding="10,5" Margin="10,0" FontWeight="Bold" Width="59" Click="Pesan_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
     </Grid>
+    
+    
 </UserControl>

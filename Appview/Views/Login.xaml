@@ -47,115 +47,123 @@
         </Style>
     </UserControl.Resources>
 
-    <Viewbox Stretch="Uniform">
-        <Grid Width="800" Height="450">
-            <Grid.Resources>
-                <!-- ToggleButton Style -->
-                <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="Black"/>
-                    <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="FontSize" Value="20"/>
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ToggleButton">
-                                <Border Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="43"
-                                        Padding="10"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <!-- Change background color when checked -->
-                                    <Trigger Property="IsChecked" Value="True">
-                                        <Setter Property="Background" Value="#FE8501"/>
-                                        <Setter Property="Foreground" Value="White"/>
-                                    </Trigger>
+    <Grid>
+        <Border>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#F83D01" Offset="0"/>
+                    <GradientStop Color="#FE8501" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        
+        <Viewbox Stretch="Uniform">
+            <Grid Width="800" Height="450">
+                <Grid.Resources>
+                    <!-- ToggleButton Style -->
+                    <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="43"
+                                    Padding="10"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Change background color when checked -->
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Background" Value="#FE8501"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
 
-                                    <!-- Mouse Over Effect -->
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFCC99"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Grid.Resources>
+                                        <!-- Mouse Over Effect -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFCC99"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Grid.Resources>
 
-            <!-- Main Background -->
-            <Border>
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                        <GradientStop Color="#F83D01" Offset="0"/>
-                        <GradientStop Color="#FE8501" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+                <!-- Main Background -->
+                <Border>
+                    
 
-                <!-- Layout -->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="400"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <!-- Layout -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- Left Section -->
-                    <Grid Grid.Column="0">
-                        <Image Source="https://i.ibb.co.com/37ZkTrm/Dibuang-Sayang-Logo-White.png"
-                               Width="300"
-                               Height="315"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Stretch="Fill"/>
-                    </Grid>
+                        <!-- Left Section -->
+                        <Grid Grid.Column="0">
+                            <Image Source="https://i.ibb.co.com/37ZkTrm/Dibuang-Sayang-Logo-White.png"
+                           Width="300"
+                           Height="315"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Stretch="Fill"/>
+                        </Grid>
 
-                    <!-- Right Section -->
-                    <Grid Grid.Column="1">
-                        <!-- Toggle Buttons -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
-                            <RadioButton x:Name="radioCustomer" Content="Customer" Margin="0, 75, 0, 0"/>
-                            <RadioButton x:Name="radioHotel" Content="Hotel" Margin="10, 75, 0, 0"/>
-                        </StackPanel>
-
-                        <!-- Input Section -->
-                        <StackPanel>
-                            <StackPanel Margin="0 100">
-                                <!-- Username Form -->
-                                <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
-                                    <TextBox x:Name="txtUsername" Width="300" Height="45" Background="#FE8501" Foreground="#FE8501"
-                                             FontSize="16" FontWeight="SemiBold"
-                                             local:Placeholder.Placeholder="Username" VerticalContentAlignment="Center"/>
-                                </Border>
-
-                                <!-- Password Form -->
-                                <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
-                                    <TextBox x:Name="txtPassword" Width="300" Height="45" Background="#FE8501" Foreground="Black"
-                                             FontSize="16" FontWeight="SemiBold"
-                                             local:Placeholder.Placeholder="Password" VerticalContentAlignment="Center"/>
-                                </Border>
-
-                                <!-- Login Button -->
-                                <Button Content="Login" Width="110" Height="35" Background="White" FontSize="20" FontWeight="SemiBold"
-                                        Foreground="#FE8501" HorizontalAlignment="Right" Margin="75 20" Click="LoginButton_Click"/>
-
-                                <!-- Register Section -->
-                                <TextBlock FontSize="16" Foreground="White" HorizontalAlignment="Right" Margin="0, 0, 50, 0">
-                                    <Run Text="Belum memiliki akun? Register "/>
-                                    <Hyperlink Click="RegisterLink_Click">
-                                        <Run Text="di sini"/>
-                                    </Hyperlink>
-                                </TextBlock>
+                        <!-- Right Section -->
+                        <Grid Grid.Column="1">
+                            <!-- Toggle Buttons -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 0, 20">
+                                <RadioButton x:Name="radioCustomer" Content="Customer" Margin="0, 75, 0, 0"/>
+                                <RadioButton x:Name="radioHotel" Content="Hotel" Margin="10, 75, 0, 0"/>
                             </StackPanel>
-                        </StackPanel>
+
+                            <!-- Input Section -->
+                            <StackPanel>
+                                <StackPanel Margin="0 100">
+                                    <!-- Username Form -->
+                                    <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
+                                        <TextBox x:Name="txtUsername" Width="300" Height="45" Background="#FE8501" Foreground="#FE8501"
+                                         FontSize="16" FontWeight="SemiBold"
+                                         local:Placeholder.Placeholder="Username" VerticalContentAlignment="Center"/>
+                                    </Border>
+
+                                    <!-- Password Form -->
+                                    <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
+                                        <TextBox x:Name="txtPassword" Width="300" Height="45" Background="#FE8501" Foreground="Black"
+                                         FontSize="16" FontWeight="SemiBold"
+                                         local:Placeholder.Placeholder="Password" VerticalContentAlignment="Center"/>
+                                    </Border>
+
+                                    <!-- Login Button -->
+                                    <Button Content="Login" Width="110" Height="35" Background="White" FontSize="20" FontWeight="SemiBold"
+                                    Foreground="#FE8501" HorizontalAlignment="Right" Margin="75 20" Click="LoginButton_Click"/>
+
+                                    <!-- Register Section -->
+                                    <TextBlock FontSize="16" Foreground="White" HorizontalAlignment="Right" Margin="0, 0, 50, 0">
+                                <Run Text="Belum memiliki akun? Register "/>
+                                <Hyperlink Click="RegisterLink_Click">
+                                    <Run Text="di sini"/>
+                                </Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Border>
-        </Grid>
-    </Viewbox>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Grid>
+
+    
     
 </UserControl>
