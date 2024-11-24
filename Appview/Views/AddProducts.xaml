@@ -69,7 +69,7 @@
 
                 <!-- StackPanel untuk input Nama, Tanggal, dan Deskripsi -->
                 <StackPanel Grid.Column="0" Orientation="Vertical" Margin="5">
-                    <TextBox Height="30" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtNamaMenu" local:Placeholder.Placeholder="Nama Menu"/>
+                    <TextBox Height="35" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtNamaMenu" local:Placeholder.Placeholder="Nama Menu"/>
                     <DatePicker Height="37" Margin="5" Padding="5" FontSize="16"  Foreground="#FB6501" SelectedDateFormat="Short" x:Name="datePickerTanggalKadaluarsa" local:Placeholder.Placeholder="Tanggal Kadaluarsa"/>
                     <TextBox Height="60" Margin="5" Padding="5" FontSize="16" Background="#FB6501" Foreground="White" x:Name="txtDeskripsi" local:Placeholder.Placeholder="Deskripsi"/>
                 </StackPanel>
