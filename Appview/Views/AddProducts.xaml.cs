@@ -204,5 +204,10 @@ namespace Appview.Views
                 ReloadData();
             }
         }
+
+        private void EditProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
