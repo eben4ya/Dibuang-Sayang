@@ -20,7 +20,9 @@ using System.Windows.Shapes;
 namespace Appview.Views
 {
     public partial class AddProducts : UserControl
-    {
+
+    {   // save edit product id
+        private int? editProductId = null;
         public AddProducts()
         {
             InitializeComponent();
@@ -118,9 +120,24 @@ namespace Appview.Views
                 return; // Kembali jika tidak ada tanggal yang dipilih
             }
 
-            DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;  
+            DateTime expiryDate = datePickerTanggalKadaluarsa.SelectedDate.Value;
 
-            AddProductToDatabase(productName, price, quantity, expiryDate, description, selectedImageData);
+            if (selectedImageData == null)
+            {
+                MessageBox.Show("Silakan pilih gambar produk.", "Kesalahan Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                return; // Kembali jika gambar belum dipilih
+            }
+
+            if (editProductId.HasValue)
+            {
+                EditProductInDatabase(editProductId.Value, productName, price, quantity, expiryDate, description, selectedImageData);
+                btnAddOrEdit.Content = "Tambahkan Menu";
+                editProductId = null;
+            }
+            else
+            {
+                AddProductToDatabase(productName, price, quantity, expiryDate, description, selectedImageData);
+            }
 
             // Reload page to refresh data
             ReloadData();
@@ -161,6 +178,123 @@ namespace Appview.Views
             {
                 mainWindow.Content = todayOrderPage;
             }
+        }
+
+        private void DeleteProductFromDatabase(int productId)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand("DELETE FROM product WHERE product_id = @productId", connection))
+                    {
+                        command.Parameters.AddWithValue("@productId", productId);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product deleted successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete product.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to delete product: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is int productId)
+            {
+                DeleteProductFromDatabase(productId);
+
+                // Reload page to refresh data
+                ReloadData();
+            }
+        }
+
+        // Edit product in the database
+        private void EditProductInDatabase(int productId, string productName, decimal price, int quantity, DateTime expiryDate, string description, byte[] imageData)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand(
+                        "UPDATE product SET productname=@name, price=@price, quantityavailable=@quantity, expirationdate=@expiryDate, description=@description, image_data=@imageData WHERE product_id=@productId"
+                        , connection))
+                    {
+                        command.Parameters.AddWithValue("@productId", productId);
+                        command.Parameters.AddWithValue("@name", productName);
+                        command.Parameters.AddWithValue("@price", price);
+                        command.Parameters.AddWithValue("@quantity", quantity);
+                        command.Parameters.AddWithValue("@expiryDate", expiryDate);
+                        command.Parameters.AddWithValue("@description", description);
+                        command.Parameters.AddWithValue("@imageData", (object?)imageData ?? DBNull.Value);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Product updated successfully!", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to update product.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to update product: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void EditProduct_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (sender is Button button && button.CommandParameter is int productId)
+            {
+                // Load product data from database
+                string connectionString = ConfigurationManager.ConnectionStrings["PostgreSqlConnection"].ConnectionString;
+
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var command = new NpgsqlCommand("SELECT * FROM product WHERE product_id = @productId", connection))
+                    {
+                        command.Parameters.AddWithValue("@productId", productId);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtNamaMenu.Text = reader["productname"].ToString();
+                                txtHarga.Text = reader["price"].ToString();
+                                txtStok.Text = reader["quantityavailable"].ToString();
+                                datePickerTanggalKadaluarsa.SelectedDate = Convert.ToDateTime(reader["expirationdate"]);
+                                txtDeskripsi.Text = reader["description"].ToString();
+
+                                editProductId = productId;
+                                btnAddOrEdit.Content = "Edit Menu";
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

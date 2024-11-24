@@ -10,11 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="take-away 1.ico" />
+    <Compile Remove="ViewModels\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <None Remove="ViewModels\**" />
+    <Page Remove="ViewModels\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Content Include="take-away 1.ico" />
   </ItemGroup>
 
   <ItemGroup>
