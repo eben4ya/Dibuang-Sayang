@@ -24,9 +24,21 @@ namespace Appview.Views
     public partial class Payment : UserControl
     {
         private int _productId;
-        public Payment(int quantity, decimal price, int productId, string productName, string descProduct)
+        private BitmapImage _productImage;
+        public BitmapImage ProductImage
+        {
+            get => _productImage;
+            set
+            {
+                _productImage = value;
+            }
+        }
+        public Payment(int quantity, decimal price, int productId, string productName, string descProduct, BitmapImage productImage)
         {
             InitializeComponent();
+
+            //DataContext = new GetProductFromDB();
+            DataContext = this;
 
             _productId = productId;
 
@@ -44,7 +56,7 @@ namespace Appview.Views
             ProductName.Text = productName;
             ProductDesc.Text = descProduct;
 
-            DataContext = new GetProductFromDB();
+            _productImage = productImage;
         }
 
         private void BayarSekarangButton_Click(object sender, RoutedEventArgs e)

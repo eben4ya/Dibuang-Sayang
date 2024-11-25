@@ -71,7 +71,8 @@ namespace Appview.Views
                 selectedData.ProductPrice,
                 selectedData.QuantityAvailable,
                 selectedData.ExpiryDate,
-                selectedData.ProductDescription
+                selectedData.ProductDescription,
+                selectedData.ProductImage
                 );  // Instantiate the FoodDetails page
             var mainWindow = Application.Current.MainWindow as MainWindow;  // Get reference to MainWindow
 

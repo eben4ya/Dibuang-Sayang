@@ -70,7 +70,8 @@
 
                         <!-- Image -->
                         <!--<Image Source="https://i.ibb.co.com/85cbJm3/Food.png" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />-->
-                        <Image Source="{Binding ProductImage}" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
+                        <!--<Image Source="{Binding ProductImage}" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />-->
+                        <Image x:Name="foodDetailsImage" Source="{Binding ProductImage}" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.Row="0" Margin="5" />
 
                         <!-- Back Button -->
                         <Button Content="Kembali" 

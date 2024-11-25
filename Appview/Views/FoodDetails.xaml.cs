@@ -17,19 +17,26 @@ using System.Windows.Shapes;
 
 namespace Appview.Views
 {
-    /// <summary>
-    /// Interaction logic for FoodDetails.xaml
-    /// </summary>
     public partial class FoodDetails : UserControl
     {
         private int _productId;
         private int _stock;
         private string _productName;
         private string _productDesc;
-        public FoodDetails(int productId, string Title, decimal Price, int Stock, DateTime Expired, string Description)
+        private BitmapImage _productImage;
+        public BitmapImage ProductImage
+        {
+            get => _productImage;
+            set
+            {
+                _productImage = value;
+            }
+        }
+        public FoodDetails(int productId, string Title, decimal Price, int Stock, DateTime Expired, string Description, BitmapImage ProductImage)
         {
             InitializeComponent();
-            DataContext = new GetProductFromDB();
+            //DataContext = new GetProductFromDB();
+            DataContext = this;
 
             _productId = productId;
             _productName = Title;
@@ -39,6 +46,7 @@ namespace Appview.Views
             ContentPrice.Text = Price.ToString();
             ContentStock.Text = Stock.ToString();
             ContentExpiry.Text = Expired.ToString();
+            _productImage = ProductImage;
             _stock = Stock;
         }
 
@@ -71,7 +79,7 @@ namespace Appview.Views
             {
                 //MessageBox.Show("Button clicked successfully!", "Notification", MessageBoxButton.OK, MessageBoxImage.Information);
                 // Create an instance of FoodDetails page
-                var paymentPage = new Payment(quantity, price, _productId, _productName, _productDesc);
+                var paymentPage = new Payment(quantity, price, _productId, _productName, _productDesc, ProductImage);
 
                 // Get the main window and set its content to the new page
                 var mainWindow = Application.Current.MainWindow as MainWindow;
