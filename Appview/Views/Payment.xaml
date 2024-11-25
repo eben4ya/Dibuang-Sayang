@@ -52,7 +52,7 @@
                         <!-- StackPanel for Payment Details -->
                         <StackPanel Grid.Row="1">
                             <!-- Konfirmasi Pembayaran -->
-                            <TextBlock Text="Konfirmasi Pembayaran" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 10, 0, 5"/>
+                            <TextBlock Text="Konfirmasi Pembayaran" Foreground="#F83D01" FontSize="18" FontWeight="Bold" Margin="0, 10, 0, 0"/>
 
                             <!-- Order Detail Grid -->
                             <Border BorderBrush="#F83D01" BorderThickness="2" CornerRadius="10" Padding="10 2 10 10" Height="110">
@@ -86,7 +86,7 @@
                                         <!-- Values on the right side of the right section -->
                                         <StackPanel Grid.Column="1" VerticalAlignment="Top">
                                             <TextBlock x:Name="QuantityTextBlock" Text="1 Pcs" Margin="10,0,0,5" FontWeight="SemiBold" FontSize="16" Foreground="#F83D01"/>
-                                            <Border Background="#FE8501" CornerRadius="10" Width="85" HorizontalAlignment="Left" Margin="10,0,0,40">
+                                            <Border Background="#FE8501" CornerRadius="10" Width="100" HorizontalAlignment="Left" Margin="10,0,0,40">
                                                 <TextBlock x:Name="TotalPaymentTextBlock" Text="Rp15.000" FontWeight="SemiBold" FontSize="16" Foreground="#FFF" Background="#FE8501" Width="75" HorizontalAlignment="Center" Padding="2"/>
                                             </Border>
                                         </StackPanel>

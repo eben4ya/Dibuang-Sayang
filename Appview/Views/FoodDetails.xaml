@@ -13,7 +13,7 @@
 
         <Style x:Key="SectionTitleStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="{StaticResource SecondaryTextColor}"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="10,0,10,5"/>
         </Style>
@@ -110,7 +110,7 @@
                         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" Margin="10,0,10,10">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                                 <TextBlock Text="Periode" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="0,0,5,0" Height="28"/>
-                                <Border Background="{StaticResource AccentColor}" CornerRadius="10" Height="40" Width="208">
+                                <Border Background="{StaticResource AccentColor}" CornerRadius="10" Height="40" Width="225" Padding="5">
                                     <TextBlock x:Name="ContentExpiry" FontSize="18" FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </StackPanel>
@@ -121,7 +121,7 @@
                                     <TextBlock x:Name="ContentStock" Text="Pcs" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                                 </Border>
                                 <TextBlock Text="Harga" FontSize="20" Foreground="{StaticResource SecondaryTextColor}" FontWeight="Bold" Margin="10,0,5,0" Height="31"/>
-                                <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="69">
+                                <Border Background="{StaticResource AccentColor}" CornerRadius="5" Height="23" Width="90">
                                     <TextBlock x:Name="ContentPrice" FontSize="16" FontWeight="DemiBold" Foreground="WhiteSmoke" HorizontalAlignment="Center"/>
                                 </Border>
                             </StackPanel>
