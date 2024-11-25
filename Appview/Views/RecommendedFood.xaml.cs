@@ -2,6 +2,8 @@
 using Appview.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +20,6 @@ using static Appview.ViewModel.UserSession;
 
 namespace Appview.Views
 {
-    /// <summary>
-    /// Interaction logic for RecommendedFood.xaml
-    /// </summary>
     public partial class RecommendedFood : UserControl
     {
         public RecommendedFood()
@@ -33,6 +32,8 @@ namespace Appview.Views
                 ProductViewModel = new GetProductFromDB(),
                 OrderViewModel = new GetOrdersFromDB(userId)
             };
+
+            viewModel.InitializeFilteredProducts();
             //DataContext = new GetProductFromDB();
             DataContext = viewModel;
         }
@@ -83,9 +84,65 @@ namespace Appview.Views
         }
 
     }
-    public class CompositeViewModelRecommendedFood
+    public class CompositeViewModelRecommendedFood : INotifyPropertyChanged
     {
+        private string _searchQuery;
+        public string SearchQuery
+        {
+            get => _searchQuery;
+            set
+            {
+                _searchQuery = value;
+                OnPropertyChanged();
+                FilterProducts();
+            }
+        }
         public GetProductFromDB ProductViewModel { get; set; }
         public GetOrdersFromDB OrderViewModel { get; set; }
+
+        private ObservableCollection<Product> _filteredProducts;
+        public ObservableCollection<Product> FilteredProducts
+        {
+            get => _filteredProducts;
+            private set
+            {
+                _filteredProducts = value;
+                OnPropertyChanged();
+            }
+        }
+        public CompositeViewModelRecommendedFood()
+        {
+            //FilteredProducts = new ObservableCollection<Product>(ProductViewModel.Products);
+        }
+
+        public void InitializeFilteredProducts()
+        {
+            if (ProductViewModel?.Products != null)
+            {
+                FilteredProducts = new ObservableCollection<Product>(ProductViewModel.Products);
+            }
+        }
+
+        private void FilterProducts()
+        {
+            if (string.IsNullOrWhiteSpace(SearchQuery))
+            {
+                FilteredProducts = new ObservableCollection<Product>(ProductViewModel.Products);
+            }
+            else
+            {
+                var filtered = ProductViewModel.Products
+                    .Where(p => p.ProductName.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                FilteredProducts = new ObservableCollection<Product>(filtered);
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

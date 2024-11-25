@@ -19,7 +19,7 @@
 
         <!-- Search Bar -->
         <Border BorderBrush="White" BorderThickness="2" CornerRadius="5" Padding="2" Margin="10">
-            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="35"  FontSize="18" Background="#FB6501" Foreground="White" local:Placeholder.Placeholder="Cari Dengan Keywords ..."/>
+            <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Height="35"  FontSize="18" Background="#FB6501" Foreground="White" local:Placeholder.Placeholder="Search Products..." VerticalContentAlignment="Center" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"/>
         </Border>
 
        
@@ -30,7 +30,8 @@
 
             <!-- Recommended Food Items with Vertical Scroll -->
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="10" MaxHeight="660">
-                <ItemsControl ItemsSource="{Binding ProductViewModel.Products}">
+                <!--<ItemsControl ItemsSource="{Binding ProductViewModel.Products}">-->
+                <ItemsControl ItemsSource="{Binding FilteredProducts}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal" />
