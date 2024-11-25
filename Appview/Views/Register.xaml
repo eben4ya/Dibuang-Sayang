@@ -36,22 +36,22 @@
                         <TextBox Margin="0, 5" Width="200" Foreground="White" 
              Background="DarkOrange" BorderThickness="1" 
              BorderBrush="White" Padding="5" 
-             local:Placeholder.Placeholder="Username..." x:Name="txtUsername" />
+             local:Placeholder.Placeholder="Username" x:Name="txtUsername" />
 
                         <TextBox Margin="0, 5" Width="200" Foreground="White" 
              Background="DarkOrange" BorderThickness="1" 
              BorderBrush="White" Padding="5" 
-             local:Placeholder.Placeholder="Email..." x:Name="txtEmail" />
+             local:Placeholder.Placeholder="Email" x:Name="txtEmail" />
 
                         <TextBox Margin="0, 5" Width="200" Foreground="White" 
              Background="DarkOrange" BorderThickness="1" 
              BorderBrush="White" Padding="5" 
-             local:Placeholder.Placeholder="Password..." x:Name="txtPassword" />
+             local:Placeholder.Placeholder="Password" x:Name="txtPassword" />
 
                         <TextBox Margin="0, 5" Width="200" Foreground="White" 
              Background="DarkOrange" BorderThickness="1" 
              BorderBrush="White" Padding="5" 
-             local:Placeholder.Placeholder="Confirm Password..." x:Name="txtPasswordConfirm" />
+             local:Placeholder.Placeholder="Confirm Password" x:Name="txtPasswordConfirm" />
                     </StackPanel>
 
                     <Button Content="Register" HorizontalAlignment="Right" Width="69" Foreground="White" 
@@ -74,6 +74,4 @@
             </Grid>
         </Viewbox>
     </Grid>
-    
-    
 </UserControl>

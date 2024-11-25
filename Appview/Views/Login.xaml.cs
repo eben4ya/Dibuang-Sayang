@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Appview.ViewModel.UserSession;
 using Appview.Services;
+using System.Globalization;
 
 
 namespace Appview.Views
@@ -50,6 +51,7 @@ namespace Appview.Views
             var db = new Database();
             string username = txtUsername.Text; // Replace with the actual name of the Username TextBox
             string password = txtPassword.Text; // Replace with the actual name of the Password TextBox
+            //string password = txtPassword.Password; // Replace with the actual name of the Password TextBox
             bool isHotel = radioHotel.IsChecked == true;
 
             if (!radioCustomer.IsChecked == true && !isHotel)
@@ -103,5 +105,18 @@ namespace Appview.Views
                 }
             }
         }
+        public class EmptyPasswordToVisibilityConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                return string.IsNullOrEmpty(value?.ToString()) ? Visibility.Visible : Visibility.Collapsed;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                return null;
+            }
+        }
+
     }
 }

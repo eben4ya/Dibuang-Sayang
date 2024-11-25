@@ -76,7 +76,9 @@ namespace Appview.Views
             string username = txtUsername.Text;
             string email = txtEmail.Text;
             string password = txtPassword.Text;
+            //string password = txtPassword.Password;
             string confirmPassword = txtPasswordConfirm.Text;
+            //string confirmPassword = txtPasswordConfirm.Password;
             bool isHotel = radioHotel.IsChecked == true; 
 
             // Basic validation

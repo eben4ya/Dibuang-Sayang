@@ -138,10 +138,12 @@
                                     </Border>
 
                                     <!-- Password Form -->
-                                    <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="1" Width="308">
-                                        <TextBox x:Name="txtPassword" Width="300" Height="45" Background="#FE8501" Foreground="Black"
-                                         FontSize="16" FontWeight="SemiBold"
-                                         local:Placeholder.Placeholder="Password" VerticalContentAlignment="Center"/>
+                                    <Border BorderBrush="white" BorderThickness="4" CornerRadius="5" Padding="1" Margin="0, 10, 0, 0" Width="308">
+                                        <StackPanel>
+                                            <!--<TextBox  x:Name="txtPasswordPlaceholder" Text="Password" Background="DarkOrange" Foreground="White" BorderThickness="1" BorderBrush="White" Padding="5" IsReadOnly="True" HorizontalContentAlignment="Left" Visibility="{Binding ElementName=txtPassword, Path=Password.Length, Converter={StaticResource EmptyPasswordToVisibilityConverter}}" Margin="0, 5" Width="300"/>-->
+                                            <TextBox x:Name="txtPassword" Width="300" Height="45" Background="#FE8501" Foreground="Black" FontSize="16" FontWeight="SemiBold" local:Placeholder.Placeholder="Password" VerticalContentAlignment="Center"/>
+                                        </StackPanel>
+                                        
                                     </Border>
 
                                     <!-- Login Button -->

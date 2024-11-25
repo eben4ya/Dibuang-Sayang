@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:Appview"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock">
+            <!--<Setter Property="FontFamily" Value="pack://application:,,,/Appview;component/Fonts/#Parkinsans"/>-->
+            <Setter Property="FontFamily" Value="pack://application:,,,/Appview;component/Fonts/#Poppins"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <!--<Setter Property="FontFamily" Value="pack://application:,,,/Appview;component/Fonts/#Parkinsans"/>-->
+            <Setter Property="FontFamily" Value="pack://application:,,,/Appview;component/Fonts/#Poppins"/>
+        </Style>
     </Application.Resources>
 </Application>
